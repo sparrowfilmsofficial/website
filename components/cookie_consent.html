@@ -1,0 +1,54 @@
+<!-- COOKIE CONSENT POPUP -->
+<div id="cookie-consent" class="fixed bottom-6 left-6 z-[100] max-w-[350px] w-[calc(100%-3rem)] bg-[#111111]/90 backdrop-blur-2xl border border-white/10 p-6 rounded-[24px] shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex flex-col gap-4 transform translate-y-[150%] transition-transform duration-1000 ease-[cubic-bezier(0.23,1,0.32,1)] isolate">
+    
+    <div class="flex items-center gap-3">
+        <div class="w-10 h-10 bg-[#FACC15]/10 rounded-full flex items-center justify-center">
+            <span class="material-symbols-outlined text-[#FACC15] text-[20px]">cookie</span>
+        </div>
+        <h4 class="text-white font-black uppercase tracking-widest text-[14px]">Cookie Policy</h4>
+    </div>
+
+    <p class="text-white/60 text-[13px] font-medium leading-relaxed">
+        We use cookies to architect a better experience and analyze our traffic. By clicking "Accept", you agree to our silent luxury digital ecosystem.
+    </p>
+
+    <div class="flex items-center gap-3 mt-2">
+        <button id="accept-cookies" class="bg-[#FACC15] text-[#111111] px-6 py-2.5 rounded-full font-black text-[12px] uppercase tracking-widest hover:bg-white transition-colors duration-300 shadow-[0_10px_20px_rgba(250,204,21,0.2)]">
+            Accept
+        </button>
+        <a href="#" class="text-white/40 hover:text-white text-[11px] font-bold uppercase tracking-widest transition-colors">
+            Read More
+        </a>
+    </div>
+
+    <!-- Decorative Glow -->
+    <div class="absolute -z-10 top-0 left-0 w-full h-full bg-[#FACC15] opacity-[0.03] blur-[40px] rounded-full pointer-events-none"></div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const consentPopup = document.getElementById('cookie-consent');
+        const acceptBtn = document.getElementById('accept-cookies');
+        const footerLink = document.getElementById('footer-cookie-link');
+
+        // Check if user already accepted for auto-show
+        if (!localStorage.getItem('sparrow_cookies_accepted')) {
+            setTimeout(() => {
+                consentPopup.style.transform = 'translateY(0)';
+            }, 2000);
+        }
+
+        // Manual trigger from footer
+        if(footerLink) {
+            footerLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                consentPopup.style.transform = 'translateY(0)';
+            });
+        }
+
+        acceptBtn.addEventListener('click', () => {
+            consentPopup.style.transform = 'translateY(150%)';
+            localStorage.setItem('sparrow_cookies_accepted', 'true');
+        });
+    });
+</script>

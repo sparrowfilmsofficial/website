@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-on-surface": "#f3f0ef",
+                        "surface-bright": "#fcf9f8",
+                        "on-secondary-fixed": "#1c1b1b",
+                        "on-tertiary-container": "#c0c0bd",
+                        "on-tertiary-fixed-variant": "#464744",
+                        "on-surface": "#1c1b1b",
+                        "on-surface-variant": "#434651",
+                        "inverse-surface": "#313030",
+                        "error-container": "#ffdad6",
+                        "primary-container": "#1f4b99",
+                        "inverse-primary": "#afc6ff",
+                        "primary-fixed-dim": "#afc6ff",
+                        "surface-container-low": "#f6f3f2",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed-dim": "#c8c6c5",
+                        "on-error": "#ffffff",
+                        "surface-variant": "#e5e2e1",
+                        "surface-container-highest": "#e5e2e1",
+                        "surface-dim": "#dcd9d9",
+                        "on-primary-fixed-variant": "#134391",
+                        "on-secondary-container": "#656464",
+                        "secondary-fixed": "#e5e2e1",
+                        "background": "#fcf9f8",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed": "#e3e3df",
+                        "on-primary-container": "#a5bfff",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed-dim": "#c6c7c3",
+                        "outline-variant": "#c3c6d3",
+                        "surface-tint": "#335caa",
+                        "primary": "#00347b",
+                        "on-tertiary-fixed": "#1a1c1a",
+                        "surface": "#fcf9f8",
+                        "on-surface-variant": "#434651",
+                        "outline": "#747782",
+                        "surface-container-high": "#ebe7e7",
+                        "tertiary": "#363836",
+                        "error": "#ba1a1a",
+                        "tertiary-container": "#4d4f4c",
+                        "on-primary-fixed": "#001944",
+                        "on-primary": "#ffffff",
+                        "primary-fixed": "#d9e2ff",
+                        "on-background": "#1c1b1b",
+                        "surface-container": "#f0edec",
+                        "secondary": "#5f5e5e",
+                        "secondary-container": "#e5e2e1",
+                        "on-error-container": "#93000a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope", "sans-serif"],
+                        "display": ["Manrope", "sans-serif"],
+                        "body": ["Manrope", "sans-serif"],
+                        "label": ["Manrope", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Manrope', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .service-card:hover .service-arrow { transform: translateX(8px); }
+    </style>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- TopNavBar Implementation -->
+<header class="fixed top-0 w-full flex justify-between items-center px-8 py-6 max-w-[1920px] mx-auto bg-surface/80 dark:bg-surface/80 backdrop-blur-xl z-50">
+<div class="text-xl font-extrabold tracking-tighter text-on-surface dark:text-on-surface">SPARROW FILMS</div>
+<nav class="hidden md:flex gap-8 items-center">
+<a class="font-manrope uppercase tracking-[0.1em] text-[0.75rem] font-medium text-blue-900 dark:text-blue-400 font-bold border-b-2 border-blue-900 dark:border-blue-400 pb-1 hover:text-blue-900 dark:hover:text-blue-400 transition-colors duration-300" href="#">WORK</a>
+<a class="font-manrope uppercase tracking-[0.1em] text-[0.75rem] font-medium text-on-surface/60 dark:text-on-surface/60 hover:text-blue-900 dark:hover:text-blue-400 transition-colors duration-300" href="#">SERVICES</a>
+<a class="font-manrope uppercase tracking-[0.1em] text-[0.75rem] font-medium text-on-surface/60 dark:text-on-surface/60 hover:text-blue-900 dark:hover:text-blue-400 transition-colors duration-300" href="#">PROCESS</a>
+<a class="font-manrope uppercase tracking-[0.1em] text-[0.75rem] font-medium text-on-surface/60 dark:text-on-surface/60 hover:text-blue-900 dark:hover:text-blue-400 transition-colors duration-300" href="#">CONTACT</a>
+</nav>
+<button class="bg-primary text-on-primary px-5 py-2 font-manrope uppercase tracking-[0.1em] text-[0.75rem] font-bold rounded-lg scale-95 hover:scale-100 duration-200 ease-in-out">START A PROJECT</button>
+</header>
+<main class="pt-24">
+<!-- TRUST STRIP SECTION -->
+<section class="bg-inverse-on-surface py-8">
+<div class="max-w-[1280px] mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+<div class="text-[16px] font-medium text-[#111111] leading-tight md:max-w-[320px]">
+                    Trusted for industrial, corporate and branded productions.
+                </div>
+<div class="flex flex-wrap justify-center md:justify-end gap-3">
+<span class="bg-white border border-[#E8E8E4] px-4 py-2 rounded-full text-[13px] font-medium text-[#5F5F5F]">Manufacturing</span>
+<span class="bg-white border border-[#E8E8E4] px-4 py-2 rounded-full text-[13px] font-medium text-[#5F5F5F]">Engineering</span>
+<span class="bg-white border border-[#E8E8E4] px-4 py-2 rounded-full text-[13px] font-medium text-[#5F5F5F]">Infrastructure</span>
+<span class="bg-white border border-[#E8E8E4] px-4 py-2 rounded-full text-[13px] font-medium text-[#5F5F5F]">Warehousing</span>
+<span class="bg-white border border-[#E8E8E4] px-4 py-2 rounded-full text-[13px] font-medium text-[#5F5F5F]">Energy</span>
+<span class="bg-white border border-[#E8E8E4] px-4 py-2 rounded-full text-[13px] font-medium text-[#5F5F5F]">Pharma</span>
+<span class="bg-white border border-[#E8E8E4] px-4 py-2 rounded-full text-[13px] font-medium text-[#5F5F5F]">Corporate</span>
+</div>
+</div>
+</section>
+<!-- SERVICES SECTION -->
+<section class="bg-[#FAFAF8] py-[112px]">
+<div class="max-w-[1280px] mx-auto px-6">
+<div class="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-8">
+<div class="max-w-[600px]">
+<span class="text-[0.75rem] font-bold uppercase tracking-widest text-primary mb-4 block">Our Expertise</span>
+<h2 class="text-[42px] font-bold text-[#111111] leading-none mb-6">What We Shoot</h2>
+<p class="text-[17px] leading-relaxed text-[#5F5F5F] max-w-[480px]">
+                            From factory floors to polished corporate films, we produce visuals that help brands communicate scale, quality and trust.
+                        </p>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Service 1 -->
+<div class="service-card group bg-white border border-[#E8E8E4] rounded-[20px] overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+<div class="aspect-[16/10] overflow-hidden bg-surface-container-highest">
+<img alt="Industrial Production" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Cinematic wide shot of a high-tech manufacturing plant with soft atmospheric lighting, industrial machinery, and a clean engineering aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5lG1GD_HHUF2xF2rE_m6ogW--nVr4NawVstSWUg1_3lp5HMYgAd25nT8eUXabvCqbq889bpQ_kJpbRhKWCdRaLrOJpGP5WONoBf59lCrMU61JEetr3DqlY6_c8jUZZzQwKmFTkJNUCXt2r_wa8q5OQkyrTLHHWBINVK_V-n1MqHudyob5K5yZFPjw-gYKulat3yol2Fvj4GBpbCDmlX2EWhZGAzM8QSUxjEcJaBihmLGjvLg0ibjKIZWiWdU0-CcEID-xtdZl37ku"/>
+</div>
+<div class="p-8">
+<h3 class="text-[18px] font-semibold text-[#111111] mb-2">Industrial Films</h3>
+<p class="text-[15px] text-[#5F5F5F] mb-6 leading-relaxed">Powerful visuals for plants, processes, machinery and scale.</p>
+<div class="service-arrow text-primary transition-transform duration-300">
+<span class="material-symbols-outlined">arrow_forward</span>
+</div>
+</div>
+</div>
+<!-- Service 2 -->
+<div class="service-card group bg-white border border-[#E8E8E4] rounded-[20px] overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+<div class="aspect-[16/10] overflow-hidden bg-surface-container-highest">
+<img alt="Factory Shooting" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Close-up of a high-precision robotic arm in a modern factory setting, bright industrial lighting with metallic reflections" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsdcAgEUFtBHnTTxgZQ-hOgmyrtmirZpBYUClzSL9IUjJCa6_zNeV1J6JOZpNw3FlhTiiTEa7-zQZAp8xLaNX5zWL_40WwOue3oNelNjcYeJYBRLW1wkRPPj48ztMdd84UatlXa9VhHJcPN9KP4q2-mwQIoaQgZkzYbtWlsjyyxa1J-WBUaLr1lfQyZbwYjtzbFhsyL4M2j5FOKK8ksexXJ63cNJ-xN5oRkZ0Z0SVV5sJA4fYZcEEO6-mhMLlaitGn0nibFGowzYh_"/>
+</div>
+<div class="p-8">
+<h3 class="text-[18px] font-semibold text-[#111111] mb-2">Factory / Plant Shoots</h3>
+<p class="text-[15px] text-[#5F5F5F] mb-6 leading-relaxed">Sharp on-site coverage designed for manufacturing and operations.</p>
+<div class="service-arrow text-primary transition-transform duration-300">
+<span class="material-symbols-outlined">arrow_forward</span>
+</div>
+</div>
+</div>
+<!-- Service 3 -->
+<div class="service-card group bg-white border border-[#E8E8E4] rounded-[20px] overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+<div class="aspect-[16/10] overflow-hidden bg-surface-container-highest">
+<img alt="Corporate Video" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Professional corporate meeting in a glass-walled boardroom with city view, modern business setting, soft natural daylight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD301r3-gSeU2GN4lOb1kM5Yuqet3swcfvtnB0aX9GLNIINY6-sU-JMGrLQqbyxj3Ifu3Nk41-KdM-_9ncB8nXJl0OpK1bk45z1M4MXwo801e1KgX27STxFY338Mm7PGAtGkGPSAkYg7nxPYz0ft_K-kZGFAxDVA7f5D9wMhjtSPthmtpGPjOrlinO8yryGTc7wzS6cEmsQVBpegu8v9wdGdz4ttpcbpH2ecr_RQtICbq5bvVYFdsMXlHYCcc879-JM6r1dAUJAfxRv"/>
+</div>
+<div class="p-8">
+<h3 class="text-[18px] font-semibold text-[#111111] mb-2">Corporate Videos</h3>
+<p class="text-[15px] text-[#5F5F5F] mb-6 leading-relaxed">Professional brand and leadership videos with strong visual credibility.</p>
+<div class="service-arrow text-primary transition-transform duration-300">
+<span class="material-symbols-outlined">arrow_forward</span>
+</div>
+</div>
+</div>
+<!-- Service 4 -->
+<div class="service-card group bg-white border border-[#E8E8E4] rounded-[20px] overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+<div class="aspect-[16/10] overflow-hidden bg-surface-container-highest">
+<img alt="Machinery Video" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Dramatic close-up of intricate mechanical gears turning, industrial macro photography with warm steel tones and shallow depth of field" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZkOYxwmimhJxjdL6YDKj_rBbwfAHUMZVYZkgm1ZrnbxLfKZ-_e2srLrac_epwy5tD2QZ8fqJaCAoqco9nqtGEiQCyTEnNpgP2O81feobXRFISWOYnf-hyoBOIDS0Aksuq2lH0NHBsx42bGm5bM0q5pE4Z3qC80ayOWAIc3vh4tjk6SJ8u1vm0L1lrGuli4jo5ptc5y9l3OEzdbDiper-LNTkfEYANZvBg_C99yyFvQfqApPbQdhJXtcepQZcV8QZAcUAIOtpgtHXz"/>
+</div>
+<div class="p-8">
+<h3 class="text-[18px] font-semibold text-[#111111] mb-2">Product / Machinery Videos</h3>
+<p class="text-[15px] text-[#5F5F5F] mb-6 leading-relaxed">Detailed films that explain function, quality and performance.</p>
+<div class="service-arrow text-primary transition-transform duration-300">
+<span class="material-symbols-outlined">arrow_forward</span>
+</div>
+</div>
+</div>
+<!-- Service 5 -->
+<div class="service-card group bg-white border border-[#E8E8E4] rounded-[20px] overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+<div class="aspect-[16/10] overflow-hidden bg-surface-container-highest">
+<img alt="Training Video" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Worker in high-visibility safety gear demonstrating a technical task, clean training environment, focus on precision and safety protocol" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDm7JpfdnsNLFS8x_xQ_1lnu6USixR5tC6VUKWIGdZSvWUCW9W3u09wRbS9R5R14-HV3Yt69IPUBSnf2sKDgH3Y8NiPUDfPsJYiswRtLrrKRn2xjLjPyWf-RvEwcrj2zDpUb29hLIie_dAIuzcu-C7lcUuTsb6_IjecHSfoXGTrxFdUdqvd8bF2x1f9ME0AKwlTUF69LA-zKs2VulvZ7UIss9rQ2b5lkhF2kuZMtcm5P3euhOxHNhm6utVE48MRBmIRXVEZv_Oa6eIp"/>
+</div>
+<div class="p-8">
+<h3 class="text-[18px] font-semibold text-[#111111] mb-2">Safety / Training Videos</h3>
+<p class="text-[15px] text-[#5F5F5F] mb-6 leading-relaxed">Clear and structured content for internal communication and training.</p>
+<div class="service-arrow text-primary transition-transform duration-300">
+<span class="material-symbols-outlined">arrow_forward</span>
+</div>
+</div>
+</div>
+<!-- Service 6 -->
+<div class="service-card group bg-white border border-[#E8E8E4] rounded-[20px] overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+<div class="aspect-[16/10] overflow-hidden bg-surface-container-highest">
+<img alt="Event Coverage" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Wide angle shot of a prestigious industrial launch event with stage lighting and audience, premium corporate event aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCB8Wdj4yYpPZ72cS5UbXFYH1Dp3IuOEfthJi9FqQ3UxOYQeC_n-I3EDa7LPNvQVMGU--qpE-vUQ-v79KDMBMdZ4Ckx1pMjjiqML01q6cm9ybdP3j18nlgI3kV8bTVtZkTXmaSAD3zu5MwfF-z23cemHLXIAWYHObbC6B_pq3yjWQUkiP2zBawl5KPC_ufBjYDMbwYJKYrXliPKWZljkLtohHJY5sbVckM7mhME-EoAgzWOP3QMtBmOYqnBsyqR7fqEV0lwtM51_vuX"/>
+</div>
+<div class="p-8">
+<h3 class="text-[18px] font-semibold text-[#111111] mb-2">Event &amp; Launch Coverage</h3>
+<p class="text-[15px] text-[#5F5F5F] mb-6 leading-relaxed">Clean event documentation for launches, inaugurations and milestones.</p>
+<div class="service-arrow text-primary transition-transform duration-300">
+<span class="material-symbols-outlined">arrow_forward</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer Implementation -->
+<footer class="w-full flex flex-col md:flex-row justify-between items-center py-12 px-8 bg-surface-container-low dark:bg-surface-container-low border-t border-outline-variant/10">
+<div class="font-black text-on-surface text-lg mb-4 md:mb-0">SPARROW FILMS</div>
+<div class="flex gap-8 items-center mb-6 md:mb-0">
+<a class="font-manrope text-[0.7rem] tracking-widest uppercase text-on-surface-variant hover:text-blue-900 transition-opacity opacity-80 hover:opacity-100" href="#">INSTAGRAM</a>
+<a class="font-manrope text-[0.7rem] tracking-widest uppercase text-on-surface-variant hover:text-blue-900 transition-opacity opacity-80 hover:opacity-100" href="#">VIMEO</a>
+<a class="font-manrope text-[0.7rem] tracking-widest uppercase text-on-surface-variant hover:text-blue-900 transition-opacity opacity-80 hover:opacity-100" href="#">LINKEDIN</a>
+<a class="font-manrope text-[0.7rem] tracking-widest uppercase text-on-surface-variant hover:text-blue-900 transition-opacity opacity-80 hover:opacity-100" href="#">LEGAL</a>
+</div>
+<div class="font-manrope text-[0.7rem] tracking-widest uppercase text-on-surface-variant opacity-60">
+            © 2024 SPARROW FILMS. ALL RIGHTS RESERVED.
+        </div>
+</footer>
+</body></html>
