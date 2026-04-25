@@ -1,0 +1,23 @@
+{
+  "name": "sparrow_films",
+  "version": "1.0.0",
+  "main": "build.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saurabhxjha/Sparrow-films.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/saurabhxjha/Sparrow-films/issues"
+  },
+  "homepage": "https://github.com/saurabhxjha/Sparrow-films#readme",
+  "description": "",
+  "devDependencies": {
+    "tailwindcss": "^3.4.19"
+  }
+}

@@ -1,4 +1,13 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* ============================================
+   Sparrow Films — Global Stylesheet
+   ============================================ */
+
 body { font-family: 'DM Sans', sans-serif; scroll-behavior: smooth; }
+
 .material-symbols-outlined {
     font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
     display: inline-block;
@@ -28,5 +37,169 @@ body { font-family: 'DM Sans', sans-serif; scroll-behavior: smooth; }
     transform: scale(1.05);
 }
 
-/* Custom Selection for that punchy feel */
+/* Custom Selection */
 ::selection { background: #FACC15; color: #111111; }
+
+
+/* ============================================
+   Consolidated from inline <style> blocks
+   ============================================ */
+
+/* Scrollbar Hide (Portfolio Carousel) */
+.hide-scrollbar::-webkit-scrollbar { display: none; }
+.hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Text Stroke Helper */
+.text-stroke-sparrow {
+    -webkit-text-stroke: 1px #FACC15;
+}
+@media (min-width: 768px) {
+    .text-stroke-sparrow {
+        -webkit-text-stroke: 2px #FACC15;
+    }
+}
+
+/* Footer Hover Typography Effect */
+.massive-footer-text {
+    color: #FCFCFA;
+    -webkit-text-stroke: 0px transparent;
+    transition: all 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+    background-image: none;
+}
+.footer-group:hover .massive-footer-text {
+    color: transparent;
+    -webkit-text-stroke: 2px #FACC15;
+    background-image: url('../logo.png');
+    background-size: 300px;
+    background-position: center;
+    background-repeat: repeat;
+    background-clip: text;
+    -webkit-background-clip: text;
+    transform: scale(1.02);
+}
+.footer-group:hover .bg-overlay {
+    opacity: 0.1;
+}
+
+
+/* ============================================
+   Header Scroll State
+   ============================================ */
+.header-scrolled .header-inner {
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+}
+
+/* Active Nav Link */
+.nav-link-active {
+    color: white !important;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 9999px;
+}
+
+
+/* ============================================
+   Mobile / Touch Device Overrides
+   ============================================ */
+@media (hover: none) and (pointer: coarse) {
+    /* Team photos show color on touch devices */
+    .team-photo {
+        filter: grayscale(0) !important;
+        transform: scale(1) !important;
+    }
+}
+
+
+/* ============================================
+   Accessibility: Reduced Motion
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}
+
+
+/* ============================================
+   Form Feedback States
+   ============================================ */
+.form-success {
+    background: rgba(34, 197, 94, 0.1);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+    color: #22c55e;
+    padding: 16px 24px;
+    border-radius: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 14px;
+    text-align: center;
+}
+.form-error {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    color: #ef4444;
+    padding: 16px 24px;
+    border-radius: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 14px;
+    text-align: center;
+}
+
+
+/* ============================================
+   Focus Visible (Keyboard Accessibility)
+   ============================================ */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+    outline: 2px solid #FACC15;
+    outline-offset: 2px;
+}
+
+/* ============================================
+   Portfolio: Instagram Reel Embedding (Pro Version)
+   ============================================ */
+.video-container {
+    background: #000;
+    overflow: hidden; /* Crucial for cropping */
+}
+
+/* 
+   Instagram Embeds are notoriously difficult to style. 
+   We use a 'Viewport Crop' technique: 
+   1. Make the iframe taller than the phone screen.
+   2. Offset it to hide the 'View more' footer and top header.
+   3. Scale it slightly to fill the width.
+*/
+.video-container.instagram-reel iframe {
+    width: 100% !important;
+    height: 125% !important; /* Make it taller than container */
+    position: absolute;
+    top: -12.5%; /* Shift up to hide header */
+    left: 0;
+    border: none;
+    pointer-events: all;
+    transform: scale(1.05); /* Hide borders */
+}
+
+/* YouTube Shorts already support 9:16 well, but we'll ensure fit */
+.video-container.youtube-short iframe {
+    width: 100% !important;
+    height: 100% !important;
+    border: none;
+}
+
+.badge-element, .content-overlay, .thumbnail-img, .play-overlay {
+    transition: opacity 0.5s ease-in-out, visibility 0.5s, transform 0.5s;
+}

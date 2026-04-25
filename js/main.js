@@ -55,8 +55,8 @@ document.addEventListener("DOMContentLoaded", function() {
     // Mobile Menu Logic
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
-    const mobileIcon = document.getElementById('mobile-icon');
-    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+    const mobileIcon = document.getElementById('menu-text');
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link, nav a');
     
     let isMenuOpen = false;
 
@@ -65,12 +65,12 @@ document.addEventListener("DOMContentLoaded", function() {
         if (isMenuOpen) {
             mobileMenu.classList.remove('opacity-0', 'pointer-events-none');
             mobileMenu.classList.add('opacity-100', 'pointer-events-auto');
-            mobileIcon.textContent = 'close';
+            mobileIcon.textContent = 'Close';
             document.body.style.overflow = 'hidden';
         } else {
             mobileMenu.classList.add('opacity-0', 'pointer-events-none');
             mobileMenu.classList.remove('opacity-100', 'pointer-events-auto');
-            mobileIcon.textContent = 'menu';
+            mobileIcon.textContent = 'Menu';
             document.body.style.overflow = '';
         }
     }
@@ -83,5 +83,122 @@ document.addEventListener("DOMContentLoaded", function() {
         link.addEventListener('click', () => {
             if (isMenuOpen) toggleMenu();
         });
+    });
+
+    // Scroll Spy & Header State
+    const header = document.querySelector('header');
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('nav a');
+
+    window.addEventListener('scroll', () => {
+        // Header State
+        if (window.scrollY > 50) {
+            header.classList.add('header-scrolled');
+        } else {
+            header.classList.remove('header-scrolled');
+        }
+
+        // Scroll Spy
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (scrollY >= (sectionTop - 200)) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove('nav-link-active', 'text-white');
+            link.classList.add('text-white/60');
+            if (link.getAttribute('href').substring(1) === current) {
+                link.classList.add('nav-link-active', 'text-white');
+                link.classList.remove('text-white/60');
+            }
+        });
+    });
+
+    // Contact Form Handler
+    const contactForm = document.querySelector('#contact form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            
+            submitBtn.innerHTML = '<span class="material-symbols-outlined animate-spin">refresh</span> Sending...';
+            submitBtn.disabled = true;
+
+            // Simulate form submission
+            setTimeout(() => {
+                const message = document.createElement('div');
+                message.className = 'form-success mt-8 reveal visible';
+                message.textContent = 'Project inquiry received. We will contact you within 24 hours.';
+                contactForm.appendChild(message);
+                
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+                contactForm.reset();
+
+                setTimeout(() => message.remove(), 5000);
+            }, 1500);
+        });
+    }
+    // Portfolio Instagram Reels Embedding Logic
+    const portfolioItems = document.querySelectorAll('.portfolio-item');
+    
+    portfolioItems.forEach(item => {
+        const overlay = item.querySelector('.play-overlay');
+        const videoContainer = item.querySelector('.video-container');
+        const reelId = item.getAttribute('data-reel-id');
+        const platform = item.getAttribute('data-video-platform') || 'instagram';
+        const contentOverlay = item.querySelector('.content-overlay');
+        const badge = item.querySelector('.badge-element');
+        const thumbnail = item.querySelector('.thumbnail-img');
+
+        if (overlay && videoContainer && reelId) {
+            overlay.addEventListener('click', () => {
+                // Hide existing UI
+                if (contentOverlay) contentOverlay.classList.add('opacity-0', 'pointer-events-none');
+                if (badge) badge.classList.add('opacity-0', 'pointer-events-none');
+                if (thumbnail) thumbnail.classList.add('opacity-0');
+                overlay.classList.add('opacity-0', 'pointer-events-none');
+
+                // Show video container
+                videoContainer.classList.remove('hidden');
+                videoContainer.innerHTML = ''; // Clear previous
+
+                let embedHtml = '';
+                if (platform === 'youtube') {
+                    videoContainer.className = 'video-container absolute inset-0 z-40 bg-black flex items-center justify-center youtube-short';
+                    embedHtml = `
+                        <iframe 
+                            src="https://www.youtube.com/embed/${reelId}?autoplay=1&rel=0&modestbranding=1&controls=0" 
+                            class="w-full h-full border-none"
+                            allow="autoplay; encrypted-media; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    `;
+                } else {
+                    videoContainer.className = 'video-container absolute inset-0 z-40 bg-black flex items-center justify-center instagram-reel';
+                    const embedUrl = platform === 'instagram-post' 
+                        ? `https://www.instagram.com/p/${reelId}/embed/` 
+                        : `https://www.instagram.com/reel/${reelId}/embed/`;
+                    
+                    embedHtml = `
+                        <iframe 
+                            src="${embedUrl}" 
+                            class="w-full h-full border-none overflow-hidden"
+                            frameborder="0" 
+                            scrolling="no" 
+                            allowtransparency="true" 
+                            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+                        </iframe>
+                    `;
+                }
+
+                videoContainer.innerHTML = embedHtml;
+            });
+        }
     });
 });
