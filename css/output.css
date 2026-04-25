@@ -636,6 +636,10 @@ video {
   top: -2.5rem;
 }
 
+.bottom-0 {
+  bottom: 0px;
+}
+
 .bottom-20 {
   bottom: 5rem;
 }
@@ -940,6 +944,10 @@ video {
   height: 1px;
 }
 
+.max-h-full {
+  max-height: 100%;
+}
+
 .max-h-none {
   max-height: none;
 }
@@ -1008,6 +1016,10 @@ video {
   width: 120px;
 }
 
+.w-\[140px\] {
+  width: 140px;
+}
+
 .w-\[280px\] {
   width: 280px;
 }
@@ -1071,6 +1083,10 @@ video {
 
 .max-w-\[500px\] {
   max-width: 500px;
+}
+
+.max-w-full {
+  max-width: 100%;
 }
 
 .flex-1 {
@@ -1554,6 +1570,14 @@ video {
   background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
 }
 
+.bg-gradient-to-l {
+  background-image: linear-gradient(to left, var(--tw-gradient-stops));
+}
+
+.bg-gradient-to-r {
+  background-image: linear-gradient(to right, var(--tw-gradient-stops));
+}
+
 .bg-gradient-to-t {
   background-image: linear-gradient(to top, var(--tw-gradient-stops));
 }
@@ -1567,6 +1591,12 @@ video {
 .from-\[\#FACC15\]\/20 {
   --tw-gradient-from: rgb(250 204 21 / 0.2) var(--tw-gradient-from-position);
   --tw-gradient-to: rgb(250 204 21 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.from-\[\#FCFCFA\] {
+  --tw-gradient-from: #FCFCFA var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(252 252 250 / 0) var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 
@@ -1636,6 +1666,11 @@ video {
 
 .p-8 {
   padding: 2rem;
+}
+
+.px-1 {
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
 }
 
 .px-10 {
@@ -1976,6 +2011,10 @@ video {
   letter-spacing: 0.2em;
 }
 
+.tracking-\[0\.3em\] {
+  letter-spacing: 0.3em;
+}
+
 .tracking-tight {
   letter-spacing: -0.025em;
 }
@@ -1999,6 +2038,10 @@ video {
 .text-\[\#111111\] {
   --tw-text-opacity: 1;
   color: rgb(17 17 17 / var(--tw-text-opacity, 1));
+}
+
+.text-\[\#111111\]\/40 {
+  color: rgb(17 17 17 / 0.4);
 }
 
 .text-\[\#111111\]\/5 {
@@ -2112,6 +2155,10 @@ video {
 
 .opacity-60 {
   opacity: 0.6;
+}
+
+.opacity-70 {
+  opacity: 0.7;
 }
 
 .opacity-80 {
@@ -2678,6 +2725,43 @@ select:focus-visible {
   transition: opacity 0.5s ease-in-out, visibility 0.5s, transform 0.5s;
 }
 
+/* ============================================
+   Brand Partners: Infinite Marquee Ticker
+   ============================================ */
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-reverse {
+  0% {
+    transform: translateX(-50%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+.animate-marquee-reverse {
+  animation: marquee-reverse 30s linear infinite;
+}
+
+.animate-marquee:hover,
+.animate-marquee-reverse:hover {
+  animation-play-state: paused;
+}
+
 .selection\:bg-\[\#FACC15\] *::-moz-selection {
   --tw-bg-opacity: 1;
   background-color: rgb(250 204 21 / var(--tw-bg-opacity, 1));
@@ -3048,6 +3132,10 @@ select:focus-visible {
     height: 4rem;
   }
 
+  .md\:h-20 {
+    height: 5rem;
+  }
+
   .md\:h-6 {
     height: 1.5rem;
   }
@@ -3102,6 +3190,14 @@ select:focus-visible {
 
   .md\:w-16 {
     width: 4rem;
+  }
+
+  .md\:w-20 {
+    width: 5rem;
+  }
+
+  .md\:w-\[160px\] {
+    width: 160px;
   }
 
   .md\:w-\[180px\] {
@@ -3161,6 +3257,10 @@ select:focus-visible {
     align-items: flex-end;
   }
 
+  .md\:justify-between {
+    justify-content: space-between;
+  }
+
   .md\:gap-12 {
     gap: 3rem;
   }
@@ -3208,6 +3308,11 @@ select:focus-visible {
   .md\:px-12 {
     padding-left: 3rem;
     padding-right: 3rem;
+  }
+
+  .md\:px-2 {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
   }
 
   .md\:px-4 {
@@ -3325,6 +3430,10 @@ select:focus-visible {
     font-size: 50px;
   }
 
+  .md\:text-\[56px\] {
+    font-size: 56px;
+  }
+
   .md\:text-\[60px\] {
     font-size: 60px;
   }
@@ -3398,6 +3507,10 @@ select:focus-visible {
   .lg\:mx-auto {
     margin-left: auto;
     margin-right: auto;
+  }
+
+  .lg\:mb-20 {
+    margin-bottom: 5rem;
   }
 
   .lg\:mb-24 {
@@ -3506,6 +3619,10 @@ select:focus-visible {
 
   .lg\:gap-32 {
     gap: 8rem;
+  }
+
+  .lg\:gap-6 {
+    gap: 1.5rem;
   }
 
   .lg\:gap-8 {
