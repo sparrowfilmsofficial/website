@@ -235,7 +235,7 @@
                     <div class="w-12 h-12 md:w-16 md:h-16 bg-[#111111] rounded-full flex items-center justify-center mb-2 md:mb-4">
                         <span class="material-symbols-outlined text-[#FACC15] text-[24px] md:text-[32px]">architecture</span>
                     </div>
-                    <h3 class="text-[36px] sm:text-[40px] md:text-[60px] lg:text-[72px] font-black text-[#111111] uppercase tracking-tighter leading-[0.9]">Strategic<br/>Content Design</h3>
+                    <h3 class="text-[36px] sm:text-[40px] md:text-[60px] lg:text-[72px] font-black text-[#111111] uppercase tracking-tighter leading-[0.9]">Content<br/>Consultation</h3>
                     <p class="text-[15px] md:text-[20px] text-[#111111]/80 font-medium leading-relaxed max-w-[450px]">
                         We architect your brand’s visual identity—from typography to social media strategy. We blend high-end design aesthetics with data-driven tactics to scale your business presence.
                     </p>
@@ -259,7 +259,7 @@
                     <div class="w-12 h-12 md:w-16 md:h-16 bg-white rounded-full flex items-center justify-center mb-2 md:mb-4">
                         <span class="material-symbols-outlined text-[#111111] text-[24px] md:text-[32px]">history_edu</span>
                     </div>
-                    <h3 class="text-[36px] sm:text-[40px] md:text-[60px] lg:text-[72px] font-black text-white uppercase tracking-tighter leading-[0.9]">Cinematic<br/>Storytelling</h3>
+                    <h3 class="text-[36px] sm:text-[40px] md:text-[60px] lg:text-[72px] font-black text-white uppercase tracking-tighter leading-[0.9]">Brand<br/>Films</h3>
                     <p class="text-[15px] md:text-[20px] text-white/70 font-medium leading-relaxed max-w-[450px]">
                         From corporate documentaries to high-impact testimonials, we craft narratives that build trust. We turn your brand’s mission into a compelling visual legacy.
                     </p>
@@ -282,7 +282,7 @@
                     <div class="w-12 h-12 md:w-16 md:h-16 bg-[#111111] rounded-full flex items-center justify-center mb-2 md:mb-4">
                         <span class="material-symbols-outlined text-white text-[24px] md:text-[32px]">ads_click</span>
                     </div>
-                    <h3 class="text-[36px] sm:text-[40px] md:text-[60px] lg:text-[72px] font-black text-[#111111] uppercase tracking-tighter leading-[0.9]">Conversion<br/>Commercials</h3>
+                    <h3 class="text-[36px] sm:text-[40px] md:text-[60px] lg:text-[72px] font-black text-[#111111] uppercase tracking-tighter leading-[0.9]">Advertise&shy;ments</h3>
                     <p class="text-[15px] md:text-[20px] text-[#5F5F5F] font-medium leading-relaxed max-w-[450px]">
                         Tailored ads for cafes, fashion, and lifestyle brands. We create scroll-stopping content designed specifically to drive footfall, engagement, and direct sales.
                     </p>
@@ -305,7 +305,7 @@
                     <div class="w-12 h-12 md:w-16 md:h-16 bg-[#FACC15] rounded-full flex items-center justify-center mb-2 md:mb-4">
                         <span class="material-symbols-outlined text-[#111111] text-[24px] md:text-[32px]">layers</span>
                     </div>
-                    <h3 class="text-[36px] sm:text-[40px] md:text-[60px] lg:text-[72px] font-black text-white uppercase tracking-tighter leading-[0.9]">Full-Scale<br/>Execution</h3>
+                    <h3 class="text-[36px] sm:text-[40px] md:text-[60px] lg:text-[72px] font-black text-white uppercase tracking-tighter leading-[0.9]">End-to-End<br/>Production</h3>
                     <p class="text-[15px] md:text-[20px] text-white/70 font-medium leading-relaxed max-w-[450px]">
                         From script to screen. Whether it's events, school shoots, or feature films, we handle pre-production, filming, and post-production for a seamless, world-class result.
                     </p>
@@ -547,7 +547,7 @@
     <!-- The Flex-Grow Interactive Pillars -->
     <div class="w-full max-w-[1400px] mx-auto px-4 md:px-12 h-auto md:h-[75vh] min-h-[600px] max-h-none md:max-h-[800px] flex flex-col md:flex-row gap-4 reveal group/pillars">
         
-        <!-- Pillar 01: Strategy -->
+        <!-- Pillar 01: Consulting -->
         <div class="relative min-h-[380px] md:min-h-0 flex-1 md:hover:flex-[5] transition-[flex] duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)] bg-[#1A1A1A] rounded-[24px] md:rounded-[40px] overflow-hidden group cursor-pointer border border-white/5 shadow-2xl">
             
             <!-- Expanded State Background -->
@@ -555,9 +555,15 @@
                  <img src="https://picsum.photos/seed/strategy/800/800" class="w-full h-full object-cover scale-110 md:group-hover:scale-100 transition-transform duration-[1500ms] grayscale" alt="Data Research"/>
                  <div class="absolute inset-0 bg-gradient-to-t from-[#111111] via-[#111111]/80 to-transparent"></div>
             </div>
+
+            <!-- DEFAULT LABEL (visible when not hovered, hidden on hover) -->
+            <div class="absolute inset-0 flex flex-col items-center justify-center z-10 md:opacity-100 md:group-hover:opacity-0 transition-opacity duration-400 pointer-events-none hidden md:flex">
+                <span class="text-[#FACC15]/30 text-[11px] font-bold uppercase tracking-[0.4em] mb-3">Phase 01</span>
+                <h3 class="text-[32px] lg:text-[42px] font-black text-white uppercase tracking-tighter leading-[0.9] text-center">Consulting</h3>
+            </div>
             
-            <!-- Expanded Content -->
-            <div class="relative md:absolute inset-0 p-6 md:p-12 flex flex-col justify-end opacity-100 transition-opacity duration-500 ease-out z-10 h-full w-full">
+            <!-- Expanded Content (hidden by default on desktop, shows on hover) -->
+            <div class="relative md:absolute inset-0 p-6 md:p-12 flex flex-col justify-end opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500 ease-out z-10 h-full w-full">
                 <div class="flex flex-col gap-2 md:gap-4 mb-6">
                     <span class="text-[#FACC15] text-[60px] md:text-[80px] lg:text-[100px] font-black leading-[0.8] tracking-tighter">01</span>
                     <h3 class="text-[32px] md:text-[40px] lg:text-[48px] font-black text-white uppercase tracking-tighter leading-[0.85] pb-1">Hook<br/>Engineering</h3>
@@ -583,8 +589,15 @@
                  <img src="https://picsum.photos/seed/shoot/800/800" class="w-full h-full object-cover scale-110 md:group-hover:scale-100 transition-transform duration-[1500ms] grayscale" alt="Shooting"/>
                  <div class="absolute inset-0 bg-gradient-to-t from-[#111111] via-[#111111]/80 to-transparent"></div>
             </div>
+
+            <!-- DEFAULT LABEL -->
+            <div class="absolute inset-0 flex flex-col items-center justify-center z-10 md:opacity-100 md:group-hover:opacity-0 transition-opacity duration-400 pointer-events-none hidden md:flex">
+                <span class="text-white/20 text-[11px] font-bold uppercase tracking-[0.4em] mb-3">Phase 02</span>
+                <h3 class="text-[32px] lg:text-[42px] font-black text-[#FACC15] uppercase tracking-tighter leading-[0.9] text-center">Execution</h3>
+            </div>
             
-            <div class="relative md:absolute inset-0 p-6 md:p-12 flex flex-col justify-end opacity-100 transition-opacity duration-500 ease-out z-10 h-full w-full">
+            <!-- Expanded Content -->
+            <div class="relative md:absolute inset-0 p-6 md:p-12 flex flex-col justify-end opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500 ease-out z-10 h-full w-full">
                 <div class="flex flex-col gap-2 md:gap-4 mb-6">
                     <span class="text-white text-[60px] md:text-[80px] lg:text-[100px] font-black leading-[0.8] tracking-tighter">02</span>
                     <h3 class="text-[32px] md:text-[40px] lg:text-[48px] font-black text-[#FACC15] uppercase tracking-tighter leading-[0.85] pb-1">Native<br/>Production</h3>
@@ -602,15 +615,22 @@
             </div>
         </div>
 
-        <!-- Pillar 03: Scale -->
+        <!-- Pillar 03: Scalability -->
         <div class="relative min-h-[380px] md:min-h-0 flex-1 md:hover:flex-[5] transition-[flex] duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)] bg-[#1A1A1A] rounded-[24px] md:rounded-[40px] overflow-hidden group cursor-pointer border border-white/5 shadow-2xl">
             
             <div class="absolute inset-0 opacity-20 md:opacity-10 md:group-hover:opacity-100 transition-opacity duration-700 z-0">
                  <img src="https://picsum.photos/seed/analytics/800/800" class="w-full h-full object-cover scale-110 md:group-hover:scale-100 transition-transform duration-[1500ms] grayscale" alt="Analytics Scale"/>
                  <div class="absolute inset-0 bg-gradient-to-t from-[#111111] via-[#111111]/80 to-transparent"></div>
             </div>
+
+            <!-- DEFAULT LABEL -->
+            <div class="absolute inset-0 flex flex-col items-center justify-center z-10 md:opacity-100 md:group-hover:opacity-0 transition-opacity duration-400 pointer-events-none hidden md:flex">
+                <span class="text-[#FACC15]/30 text-[11px] font-bold uppercase tracking-[0.4em] mb-3">Phase 03</span>
+                <h3 class="text-[32px] lg:text-[42px] font-black text-white uppercase tracking-tighter leading-[0.9] text-center">Scalability</h3>
+            </div>
             
-            <div class="relative md:absolute inset-0 p-6 md:p-12 flex flex-col justify-end opacity-100 transition-opacity duration-500 ease-out z-10 h-full w-full">
+            <!-- Expanded Content -->
+            <div class="relative md:absolute inset-0 p-6 md:p-12 flex flex-col justify-end opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500 ease-out z-10 h-full w-full">
                 <div class="flex flex-col gap-2 md:gap-4 mb-6">
                     <span class="text-[#FACC15] text-[60px] md:text-[80px] lg:text-[100px] font-black leading-[0.8] tracking-tighter">03</span>
                     <h3 class="text-[32px] md:text-[40px] lg:text-[48px] font-black text-white uppercase tracking-tighter leading-[0.85] pb-1">Data &<br/>Iteration</h3>
@@ -628,7 +648,7 @@
             </div>
         </div>
 
-    </div>
+
 </section>
 
     <!-- ABOUT SECTION (The Staggered Culture Grid) -->
@@ -1007,54 +1027,60 @@
             </div>
         </div>
 
-        <!-- Right Column: Minimalist Form -->
+        <!-- Right Column: Premium Form -->
         <div class="reveal" style="transition-delay: 200ms">
-            <form action="#" method="POST" id="sparrow-contact-form" class="flex flex-col gap-10">
+            <div class="bg-[#1A1A1A] border border-white/5 rounded-[32px] md:rounded-[48px] p-8 md:p-12 shadow-[0_20px_60px_rgba(0,0,0,0.5)] relative overflow-hidden group/card">
+                <!-- Inner glow for depth -->
+                <div class="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#FACC15]/20 to-transparent opacity-50"></div>
                 
-                <!-- Name Field -->
-                <div class="flex flex-col gap-4 group">
-                    <label for="contact-name" class="text-[12px] font-bold text-white/30 uppercase tracking-[0.2em] group-focus-within:text-[#FACC15] transition-colors">Full Name</label>
-                    <input id="contact-name" type="text" placeholder="Aryan Sharma" class="bg-transparent border-b border-white/10 py-4 text-[18px] md:text-[24px] font-bold text-white outline-none focus:border-[#FACC15] transition-all duration-500 placeholder:text-white/5" required>
-                </div>
-
-                <!-- Brand & Email Row -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                    <div class="flex flex-col gap-4 group">
-                        <label for="contact-brand" class="text-[12px] font-bold text-white/30 uppercase tracking-[0.2em] group-focus-within:text-[#FACC15] transition-colors">Brand Name</label>
-                        <input id="contact-brand" type="text" placeholder="Your Company" class="bg-transparent border-b border-white/10 py-4 text-[18px] md:text-[24px] font-bold text-white outline-none focus:border-[#FACC15] transition-all duration-500 placeholder:text-white/5" required>
+                <form action="#" method="POST" id="sparrow-contact-form" class="flex flex-col gap-6 md:gap-8 relative z-10">
+                    
+                    <!-- Name Field -->
+                    <div class="flex flex-col gap-3 group">
+                        <label for="contact-name" class="text-[11px] md:text-[13px] font-bold text-white/40 uppercase tracking-[0.2em] group-focus-within:text-[#FACC15] transition-colors ml-4">Full Name</label>
+                        <input id="contact-name" type="text" placeholder="Aryan Sharma" class="bg-[#111111] border border-white/10 rounded-2xl px-6 py-4 md:py-5 text-[16px] md:text-[18px] font-medium text-white outline-none focus:border-[#FACC15] focus:ring-1 focus:ring-[#FACC15]/50 hover:border-white/20 transition-all duration-300 placeholder:text-white/20" required>
                     </div>
-                    <div class="flex flex-col gap-4 group">
-                        <label for="contact-email" class="text-[12px] font-bold text-white/30 uppercase tracking-[0.2em] group-focus-within:text-[#FACC15] transition-colors">Email Address</label>
-                        <input id="contact-email" type="email" placeholder="hello@brand.com" class="bg-transparent border-b border-white/10 py-4 text-[18px] md:text-[24px] font-bold text-white outline-none focus:border-[#FACC15] transition-all duration-500 placeholder:text-white/5" required>
+
+                    <!-- Brand & Email Row -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+                        <div class="flex flex-col gap-3 group">
+                            <label for="contact-brand" class="text-[11px] md:text-[13px] font-bold text-white/40 uppercase tracking-[0.2em] group-focus-within:text-[#FACC15] transition-colors ml-4">Brand Name</label>
+                            <input id="contact-brand" type="text" placeholder="Your Company" class="bg-[#111111] border border-white/10 rounded-2xl px-6 py-4 md:py-5 text-[16px] md:text-[18px] font-medium text-white outline-none focus:border-[#FACC15] focus:ring-1 focus:ring-[#FACC15]/50 hover:border-white/20 transition-all duration-300 placeholder:text-white/20" required>
+                        </div>
+                        <div class="flex flex-col gap-3 group">
+                            <label for="contact-email" class="text-[11px] md:text-[13px] font-bold text-white/40 uppercase tracking-[0.2em] group-focus-within:text-[#FACC15] transition-colors ml-4">Email Address</label>
+                            <input id="contact-email" type="email" placeholder="hello@brand.com" class="bg-[#111111] border border-white/10 rounded-2xl px-6 py-4 md:py-5 text-[16px] md:text-[18px] font-medium text-white outline-none focus:border-[#FACC15] focus:ring-1 focus:ring-[#FACC15]/50 hover:border-white/20 transition-all duration-300 placeholder:text-white/20" required>
+                        </div>
                     </div>
-                </div>
 
-                <!-- Service Selection -->
-                <div class="flex flex-col gap-4 group">
-                    <label for="contact-service" class="text-[12px] font-bold text-white/30 uppercase tracking-[0.2em] group-focus-within:text-[#FACC15] transition-colors">Service Needed</label>
-                    <div class="relative">
-                        <select id="contact-service" class="w-full bg-transparent border-b border-white/10 py-4 text-[18px] md:text-[24px] font-bold text-white outline-none focus:border-[#FACC15] appearance-none cursor-pointer transition-all duration-500">
-                            <option class="bg-[#111111] text-white">Viral UGC Ads</option>
-                            <option class="bg-[#111111] text-white">Cinematic Brand Film</option>
-                            <option class="bg-[#111111] text-white">Product Operations</option>
-                            <option class="bg-[#111111] text-white">Full Visual Strategy</option>
-                        </select>
-                        <span class="material-symbols-outlined absolute right-0 top-1/2 -translate-y-1/2 text-white/20 pointer-events-none">expand_more</span>
+                    <!-- Service Selection -->
+                    <div class="flex flex-col gap-3 group">
+                        <label for="contact-service" class="text-[11px] md:text-[13px] font-bold text-white/40 uppercase tracking-[0.2em] group-focus-within:text-[#FACC15] transition-colors ml-4">Service Needed</label>
+                        <div class="relative">
+                            <select id="contact-service" class="w-full bg-[#111111] border border-white/10 rounded-2xl px-6 py-4 md:py-5 text-[16px] md:text-[18px] font-medium text-white outline-none focus:border-[#FACC15] focus:ring-1 focus:ring-[#FACC15]/50 hover:border-white/20 appearance-none cursor-pointer transition-all duration-300">
+                                <option value="" disabled selected class="text-white/20">Select a service</option>
+                                <option class="bg-[#111111] text-white">Content Consultation</option>
+                                <option class="bg-[#111111] text-white">Brand Films</option>
+                                <option class="bg-[#111111] text-white">Advertisements</option>
+                                <option class="bg-[#111111] text-white">End-to-End Production</option>
+                            </select>
+                            <span class="material-symbols-outlined absolute right-6 top-1/2 -translate-y-1/2 text-white/40 pointer-events-none group-focus-within:text-[#FACC15] transition-colors">expand_more</span>
+                        </div>
                     </div>
-                </div>
 
-                <!-- Message Field -->
-                <div class="flex flex-col gap-4 group">
-                    <label for="contact-message" class="text-[12px] font-bold text-white/30 uppercase tracking-[0.2em] group-focus-within:text-[#FACC15] transition-colors">Project Brief</label>
-                    <textarea id="contact-message" rows="3" placeholder="Tell us about your goals..." class="bg-transparent border-b border-white/10 py-4 text-[18px] md:text-[24px] font-bold text-white outline-none focus:border-[#FACC15] transition-all duration-500 placeholder:text-white/5 resize-none"></textarea>
-                </div>
+                    <!-- Message Field -->
+                    <div class="flex flex-col gap-3 group">
+                        <label for="contact-message" class="text-[11px] md:text-[13px] font-bold text-white/40 uppercase tracking-[0.2em] group-focus-within:text-[#FACC15] transition-colors ml-4">Project Brief</label>
+                        <textarea id="contact-message" rows="4" placeholder="Tell us about your goals..." class="bg-[#111111] border border-white/10 rounded-2xl px-6 py-4 md:py-5 text-[16px] md:text-[18px] font-medium text-white outline-none focus:border-[#FACC15] focus:ring-1 focus:ring-[#FACC15]/50 hover:border-white/20 transition-all duration-300 placeholder:text-white/20 resize-none"></textarea>
+                    </div>
 
-                <!-- Submit Button -->
-                <button type="submit" class="mt-8 bg-[#FACC15] text-[#111111] py-6 rounded-full font-black text-[16px] md:text-[18px] uppercase tracking-[0.2em] hover:bg-white transition-all duration-500 flex items-center justify-center gap-4 group shadow-[0_20px_40px_rgba(250,204,21,0.1)]">
-                    Start Project
-                    <span class="material-symbols-outlined group-hover:translate-x-2 transition-transform duration-300">arrow_forward</span>
-                </button>
-            </form>
+                    <!-- Submit Button -->
+                    <button type="submit" class="mt-4 bg-[#FACC15] text-[#111111] py-5 md:py-6 rounded-2xl font-black text-[15px] md:text-[16px] uppercase tracking-[0.2em] hover:bg-white active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-3 group/btn shadow-[0_10px_30px_rgba(250,204,21,0.15)] hover:shadow-[0_10px_40px_rgba(250,204,21,0.25)] w-full">
+                        Start Project
+                        <span class="material-symbols-outlined group-hover/btn:translate-x-1 transition-transform duration-300 text-[20px]">arrow_forward</span>
+                    </button>
+                </form>
+            </div>
         </div>
     </div>
 </section>
