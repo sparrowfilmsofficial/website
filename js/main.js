@@ -144,61 +144,159 @@ document.addEventListener("DOMContentLoaded", function() {
             }, 1500);
         });
     }
-    // Portfolio Instagram Reels Embedding Logic
-    const portfolioItems = document.querySelectorAll('.portfolio-item');
-    
-    portfolioItems.forEach(item => {
-        const overlay = item.querySelector('.play-overlay');
+    // Portfolio Infinite Loop & Drag Logic
+    const scrollContainer = document.querySelector('.portfolio-scroll-container');
+    if (scrollContainer) {
+        const originalItems = [...scrollContainer.querySelectorAll('.portfolio-item')];
+        
+        // Clone items for infinite loop (maintain correct sequence)
+        const clonesBefore = originalItems.map(item => item.cloneNode(true));
+        const clonesAfter = originalItems.map(item => item.cloneNode(true));
+
+        // Append to end
+        clonesAfter.forEach(clone => scrollContainer.appendChild(clone));
+        // Prepend to start (reverse loop to maintain order with insertBefore)
+        clonesBefore.reverse().forEach(clone => {
+            scrollContainer.insertBefore(clone, scrollContainer.firstChild);
+        });
+
+        // Calculate metrics
+        const getMetrics = () => {
+            const firstItem = scrollContainer.querySelector('.portfolio-item');
+            const style = window.getComputedStyle(scrollContainer);
+            const gap = parseFloat(style.gap) || 0;
+            return firstItem.offsetWidth + gap;
+        };
+
+        // Initial Position (centered on original items)
+        let itemWidth = getMetrics();
+        // Use requestAnimationFrame for a clean jump before next paint
+        requestAnimationFrame(() => {
+            scrollContainer.scrollLeft = itemWidth * originalItems.length;
+        });
+
+        // Resize handling
+        window.addEventListener('resize', () => {
+            itemWidth = getMetrics();
+        });
+
+        // Infinite Scroll Boundary Logic
+        scrollContainer.addEventListener('scroll', () => {
+            const maxScroll = scrollContainer.scrollWidth - scrollContainer.clientWidth;
+            const currentScroll = scrollContainer.scrollLeft;
+            const threshold = 10; // Precision buffer
+
+            if (currentScroll <= threshold) {
+                // Jump to the second set
+                scrollContainer.scrollLeft = itemWidth * originalItems.length;
+            } else if (currentScroll >= maxScroll - threshold) {
+                // Jump back to the second set
+                scrollContainer.scrollLeft = maxScroll - (itemWidth * originalItems.length);
+            }
+        });
+
+        // Drag to Scroll Logic
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        scrollContainer.addEventListener('mousedown', (e) => {
+            isDown = true;
+            scrollContainer.classList.add('active');
+            startX = e.pageX - scrollContainer.offsetLeft;
+            scrollLeft = scrollContainer.scrollLeft;
+            scrollContainer.style.scrollSnapType = 'none'; // Disable snap during drag
+        });
+        
+        const stopDragging = () => {
+            if (!isDown) return;
+            isDown = false;
+            scrollContainer.classList.remove('active');
+            scrollContainer.style.scrollSnapType = 'x mandatory'; // Re-enable snap
+        };
+
+        scrollContainer.addEventListener('mouseleave', stopDragging);
+        scrollContainer.addEventListener('mouseup', stopDragging);
+        
+        scrollContainer.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - scrollContainer.offsetLeft;
+            const walk = (x - startX) * 1.5; 
+            scrollContainer.scrollLeft = scrollLeft - walk;
+        });
+    }
+
+    // Portfolio Video Embedding (Using Event Delegation for Clones)
+    document.addEventListener('click', (e) => {
+        const playBtn = e.target.closest('.play-overlay');
+        if (!playBtn) return;
+
+        const item = playBtn.closest('.portfolio-item');
+        if (!item) return;
+
         const videoContainer = item.querySelector('.video-container');
         const reelId = item.getAttribute('data-reel-id');
         const platform = item.getAttribute('data-video-platform') || 'instagram';
-        const contentOverlay = item.querySelector('.content-overlay');
-        const badge = item.querySelector('.badge-element');
         const thumbnail = item.querySelector('.thumbnail-img');
 
-        if (overlay && videoContainer && reelId) {
-            overlay.addEventListener('click', () => {
-                // Hide existing UI
-                if (contentOverlay) contentOverlay.classList.add('opacity-0', 'pointer-events-none');
-                if (badge) badge.classList.add('opacity-0', 'pointer-events-none');
-                if (thumbnail) thumbnail.classList.add('opacity-0');
-                overlay.classList.add('opacity-0', 'pointer-events-none');
+        if (videoContainer && reelId) {
+            // Hide UI
+            if (thumbnail) thumbnail.classList.add('opacity-0');
+            playBtn.classList.add('opacity-0', 'pointer-events-none');
 
-                // Show video container
-                videoContainer.classList.remove('hidden');
-                videoContainer.innerHTML = ''; // Clear previous
+            // Show video
+            videoContainer.classList.remove('hidden');
+            videoContainer.innerHTML = ''; 
 
-                let embedHtml = '';
-                if (platform === 'youtube') {
-                    videoContainer.className = 'video-container absolute inset-0 z-40 bg-black flex items-center justify-center youtube-short';
-                    embedHtml = `
-                        <iframe 
-                            src="https://www.youtube.com/embed/${reelId}?autoplay=1&rel=0&modestbranding=1&controls=0" 
-                            class="w-full h-full border-none"
-                            allow="autoplay; encrypted-media; picture-in-picture" 
-                            allowfullscreen>
-                        </iframe>
-                    `;
-                } else {
-                    videoContainer.className = 'video-container absolute inset-0 z-40 bg-black flex items-center justify-center instagram-reel';
-                    const embedUrl = platform === 'instagram-post' 
-                        ? `https://www.instagram.com/p/${reelId}/embed/` 
-                        : `https://www.instagram.com/reel/${reelId}/embed/`;
-                    
-                    embedHtml = `
-                        <iframe 
-                            src="${embedUrl}" 
-                            class="w-full h-full border-none overflow-hidden"
-                            frameborder="0" 
-                            scrolling="no" 
-                            allowtransparency="true" 
-                            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-                        </iframe>
-                    `;
-                }
-
-                videoContainer.innerHTML = embedHtml;
-            });
+            let embedHtml = '';
+            if (platform === 'youtube') {
+                videoContainer.className = 'video-container absolute inset-0 z-40 bg-black flex items-center justify-center youtube-short';
+                embedHtml = `
+                    <iframe 
+                        src="https://www.youtube.com/embed/${reelId}?autoplay=1&rel=0&modestbranding=1&controls=0" 
+                        class="w-full h-full border-none"
+                        allow="autoplay; encrypted-media; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                `;
+            } else {
+                videoContainer.className = 'video-container absolute inset-0 z-40 bg-black flex items-center justify-center instagram-reel';
+                const embedUrl = platform === 'instagram-post' 
+                    ? `https://www.instagram.com/p/${reelId}/embed/` 
+                    : `https://www.instagram.com/reel/${reelId}/embed/`;
+                
+                embedHtml = `
+                    <iframe src="${embedUrl}" class="w-full h-full border-none overflow-hidden" frameborder="0" scrolling="no" allowtransparency="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                `;
+            }
+            videoContainer.innerHTML = embedHtml;
         }
     });
+    // WhatsApp Smart-Hide Logic
+    const whatsappBtn = document.getElementById('whatsapp-float');
+    if (whatsappBtn) {
+        let scrollTimeout;
+        
+        // Initial show after 2 seconds
+        setTimeout(() => {
+            whatsappBtn.classList.add('opacity-100', 'pointer-events-auto', 'scale-100');
+            whatsappBtn.classList.remove('opacity-0', 'pointer-events-none', 'scale-0');
+        }, 2000);
+
+        window.addEventListener('scroll', () => {
+            // Instantly hide on scroll
+            whatsappBtn.classList.remove('opacity-100', 'pointer-events-auto', 'scale-100');
+            whatsappBtn.classList.add('opacity-0', 'pointer-events-none', 'scale-0');
+
+            // Clear existing timeout
+            clearTimeout(scrollTimeout);
+
+            // Re-show after 800ms of no scrolling
+            scrollTimeout = setTimeout(() => {
+                whatsappBtn.classList.add('opacity-100', 'pointer-events-auto', 'scale-100');
+                whatsappBtn.classList.remove('opacity-0', 'pointer-events-none', 'scale-0');
+            }, 800);
+        });
+    }
 });

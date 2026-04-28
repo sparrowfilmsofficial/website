@@ -10,6 +10,56 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" href="css/output.css">
+    <style>
+        @keyframes marqueeLoop {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-50%, 0, 0); }
+        }
+        @-webkit-keyframes marqueeLoop {
+            0% { -webkit-transform: translate3d(0, 0, 0); }
+            100% { -webkit-transform: translate3d(-50%, 0, 0); }
+        }
+        .marquee-container {
+            overflow: hidden;
+            background: #FCFCFA;
+            padding: 40px 0;
+            border-bottom: 1px solid rgba(17, 17, 17, 0.05);
+            position: relative;
+            z-index: 20;
+            width: 100%;
+        }
+        .marquee-track {
+            display: flex;
+            width: max-content;
+            min-width: 200%;
+            animation: marqueeLoop 30s linear infinite !important;
+            -webkit-animation: marqueeLoop 30s linear infinite !important;
+            will-change: transform;
+        }
+        .marquee-item {
+            flex-shrink: 0;
+            padding: 0 40px;
+            display: flex;
+            align-items: center;
+        }
+        .marquee-item img {
+            height: 32px;
+            width: auto;
+            object-fit: contain;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+        @media (min-width: 640px) { .marquee-item img { height: 40px; } .marquee-item { padding: 0 60px; } }
+        @media (min-width: 768px) { .marquee-item img { height: 56px; } .marquee-item { padding: 0 80px; } }
+        
+        .marquee-fade { position: absolute; top: 0; bottom: 0; width: 150px; z-index: 2; pointer-events: none; }
+        .marquee-fade-left { left: 0; background: linear-gradient(to right, #FCFCFA, rgba(252, 252, 250, 0)); }
+        .marquee-fade-right { right: 0; background: linear-gradient(to left, #FCFCFA, rgba(252, 252, 250, 0)); }
+        .blend { mix-blend-mode: multiply; }
+        .hero-title { text-shadow: 0 8px 32px rgba(0,0,0,0.8); }
+        .hero-subtitle { text-shadow: 0 4px 16px rgba(0,0,0,0.6); }
+        .hero-accent { box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 8px 16px rgba(250,204,21,0.3); }
+    </style>
 </head>
 <body class="bg-[#FCFCFA] text-[#111111] font-['DM_Sans'] antialiased overflow-x-hidden selection:bg-[#FACC15] selection:text-black">
 
@@ -33,7 +83,8 @@
             <nav class="hidden lg:flex items-center gap-1 bg-[#111111]/95 backdrop-blur-xl border border-white/10 px-2 py-2 rounded-full shadow-[0_10px_30px_rgba(0,0,0,0.2)]">
                 <a href="#hero" class="text-[12px] text-white font-bold uppercase tracking-widest px-5 py-2 rounded-full hover:bg-white/10 transition-colors">Home</a>
                 <a href="#services" class="text-[12px] text-white/60 font-bold uppercase tracking-widest px-5 py-2 rounded-full hover:bg-white/10 hover:text-white transition-colors">Services</a>
-                <a href="#about" class="text-[12px] text-white/60 font-bold uppercase tracking-widest px-5 py-2 rounded-full hover:bg-white/10 hover:text-white transition-colors">Culture</a>
+                <a href="#work" class="text-[12px] text-white/60 font-bold uppercase tracking-widest px-5 py-2 rounded-full hover:bg-white/10 hover:text-white transition-colors">Our Work</a>
+                <a href="#about" class="text-[12px] text-white/60 font-bold uppercase tracking-widest px-5 py-2 rounded-full hover:bg-white/10 hover:text-white transition-colors">About Us</a>
                 <a href="#team" class="text-[12px] text-white/60 font-bold uppercase tracking-widest px-5 py-2 rounded-full hover:bg-white/10 hover:text-white transition-colors">Collective</a>
             </nav>
 
@@ -67,19 +118,22 @@
 
         <!-- The Giant Links -->
         <nav class="flex flex-col items-center md:items-start gap-4 md:gap-2 w-full mt-10 md:mt-0">
-            <a class="text-[60px] md:text-[100px] lg:text-[130px] text-white font-black uppercase tracking-tighter cursor-pointer mobile-nav-link hover:text-[#FACC15] hover:pl-8 transition-all duration-500 leading-[0.9] origin-left" href="#hero">
+            <a class="text-[45px] sm:text-[55px] md:text-[80px] lg:text-[100px] text-white font-black uppercase tracking-tighter cursor-pointer mobile-nav-link hover:text-[#FACC15] hover:pl-6 transition-all duration-500 leading-[1] origin-left" href="#hero">
                 Home<span class="text-[#FACC15]">.</span>
             </a>
-            <a class="text-[60px] md:text-[100px] lg:text-[130px] text-white/30 font-black uppercase tracking-tighter hover:text-white hover:pl-8 transition-all duration-500 cursor-pointer mobile-nav-link leading-[0.9] origin-left" href="#services">
+            <a class="text-[45px] sm:text-[55px] md:text-[80px] lg:text-[100px] text-white/30 font-black uppercase tracking-tighter hover:text-white hover:pl-6 transition-all duration-500 cursor-pointer mobile-nav-link leading-[1] origin-left" href="#services">
                 Services<span class="text-[#FACC15] opacity-0 hover:opacity-100">.</span>
             </a>
-            <a class="text-[60px] md:text-[100px] lg:text-[130px] text-white/30 font-black uppercase tracking-tighter hover:text-white hover:pl-8 transition-all duration-500 cursor-pointer mobile-nav-link leading-[0.9] origin-left" href="#about">
-                Culture<span class="text-[#FACC15] opacity-0 hover:opacity-100">.</span>
+            <a class="text-[45px] sm:text-[55px] md:text-[80px] lg:text-[100px] text-white/30 font-black uppercase tracking-tighter hover:text-white hover:pl-6 transition-all duration-500 cursor-pointer mobile-nav-link leading-[1] origin-left" href="#work">
+                Our Work<span class="text-[#FACC15] opacity-0 hover:opacity-100">.</span>
             </a>
-            <a class="text-[60px] md:text-[100px] lg:text-[130px] text-white/30 font-black uppercase tracking-tighter hover:text-white hover:pl-8 transition-all duration-500 cursor-pointer mobile-nav-link leading-[0.9] origin-left" href="#team">
+            <a class="text-[45px] sm:text-[55px] md:text-[80px] lg:text-[100px] text-white/30 font-black uppercase tracking-tighter hover:text-white hover:pl-6 transition-all duration-500 cursor-pointer mobile-nav-link leading-[1] origin-left" href="#about">
+                About Us<span class="text-[#FACC15] opacity-0 hover:opacity-100">.</span>
+            </a>
+            <a class="text-[45px] sm:text-[55px] md:text-[80px] lg:text-[100px] text-white/30 font-black uppercase tracking-tighter hover:text-white hover:pl-6 transition-all duration-500 cursor-pointer mobile-nav-link leading-[1] origin-left" href="#team">
                 Collective<span class="text-[#FACC15] opacity-0 hover:opacity-100">.</span>
             </a>
-            <a class="text-[60px] md:text-[100px] lg:text-[130px] text-white/30 font-black uppercase tracking-tighter hover:text-white hover:pl-8 transition-all duration-500 cursor-pointer mobile-nav-link leading-[0.9] origin-left" href="#contact">
+            <a class="text-[45px] sm:text-[55px] md:text-[80px] lg:text-[100px] text-white/30 font-black uppercase tracking-tighter hover:text-white hover:pl-6 transition-all duration-500 cursor-pointer mobile-nav-link leading-[1] origin-left" href="#contact">
                 Contact<span class="text-[#FACC15] opacity-0 hover:opacity-100">.</span>
             </a>
         </nav>
@@ -97,118 +151,73 @@
     </div>
 </header>
 
-<main class="pt-[80px]">
+<main>
     
-    <!-- HERO SECTION (Gen-Z Sales Vibe with Floating Phone) -->
-<section id="hero" class="relative min-h-[100dvh] flex flex-col justify-center bg-[#FCFCFA] overflow-hidden pt-20 pb-24 border-b border-[#111111]/10">
+    <!-- HERO SECTION -->
+    <section id="hero" class="relative min-h-[100dvh] flex flex-col justify-end overflow-hidden pb-16 md:pb-24 border-b border-[#111111]/10">
     
-    <!-- Subtle Background Elements -->
-    <div class="absolute right-0 top-0 w-1/2 h-[800px] bg-[#FACC15] blur-[150px] opacity-[0.05] rounded-full pointer-events-none z-0"></div>
+        <!-- Background Video -->
+        <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover z-0">
+            <source src="hero-video/video6305399314973729341.mp4" type="video/mp4">
+        </video>
 
-    <div class="relative w-full max-w-[1400px] mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-20 items-center z-10">
-        
-        <!-- Left: Sales-Heavy Copy -->
-        <div class="flex flex-col items-start text-left pt-10 lg:pt-0">
+        <!-- Strategic Overlay -->
+        <div class="absolute inset-0 bg-gradient-to-b from-[#111111]/95 via-[#111111]/50 to-transparent z-10 pointer-events-none"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-[#111111]/85 via-transparent to-transparent z-10 pointer-events-none"></div>
+
+        <div class="relative w-full max-w-[1400px] mx-auto px-6 md:px-12 flex flex-col items-center justify-center text-center z-20">
             
-            <!-- Badge -->
-            
-            
-            <!-- Brutalist Typography with Inline Accent -->
-            <h1 class="text-[56px] md:text-[80px] lg:text-[100px] font-black text-[#111111] uppercase leading-[0.9] tracking-tighter mb-8 reveal">
+            <h1 class="text-[56px] md:text-[80px] lg:text-[100px] font-black text-white uppercase leading-[0.9] tracking-tighter mb-8 reveal hero-title">
                 Visuals that <br/>
-                <span class="flex items-center gap-3 md:gap-5 flex-wrap">
+                <span class="flex items-center justify-center gap-3 md:gap-5 flex-wrap">
                     print 
-                    <!-- Inline Motion Accent -->
-                    <span class="inline-flex items-center justify-center w-[70px] h-[70px] md:w-[90px] md:h-[90px] bg-[#FACC15] rounded-[24px] text-[#111111] -rotate-6 hover:rotate-6 transition-transform duration-300 shadow-xl shrink-0 cursor-pointer">
-                        <span class="material-symbols-outlined text-[40px] md:text-[50px] font-bold" style="font-variation-settings: 'FILL' 1;">attach_money</span>
+                    <span class="inline-flex items-center justify-center w-[70px] h-[70px] md:w-[90px] md:h-[90px] bg-[#FACC15] rounded-[24px] text-[#111111] -rotate-6 hover:rotate-6 transition-transform duration-300 shadow-2xl shrink-0 cursor-pointer animate-[pulse_3s_infinite] hero-accent">
+                        <span class="material-symbols-outlined text-[40px] md:text-[50px] font-bold hero-money-icon">attach_money</span>
                     </span> 
                     money.
                 </span>
             </h1>
 
-            <p class="text-[18px] md:text-[20px] text-[#5F5F5F] font-medium leading-relaxed max-w-[500px] mb-12 reveal" style="transition-delay: 100ms">
+            <p class="text-[18px] md:text-[20px] text-white font-medium leading-relaxed max-w-[600px] mb-12 reveal hero-subtitle">
                 We engineer high-retention TikToks, Reels, and UGC that hijack the algorithm, drop your CPA, and scale your revenue.
             </p>
 
-            <div class="flex flex-col sm:flex-row items-center gap-8 reveal w-full sm:w-auto" style="transition-delay: 200ms">
-                <!-- Premium CTA Button -->
-                <a href="#contact" class="w-full sm:w-auto bg-[#111111] text-white px-10 py-5 rounded-full font-black text-[16px] uppercase tracking-widest hover:bg-[#FACC15] hover:text-[#111111] transition-all duration-300 shadow-[0_20px_40px_rgba(0,0,0,0.2)] flex items-center justify-center gap-4 group whitespace-nowrap">
+            <div class="flex flex-col sm:flex-row items-center gap-8 reveal w-full sm:w-auto hero-cta-container">
+                <a href="#contact" class="w-full sm:w-auto bg-[#FACC15] text-[#111111] px-10 py-5 rounded-full font-black text-[16px] uppercase tracking-widest hover:bg-white transition-all duration-300 shadow-[0_20px_40px_rgba(0,0,0,0.4)] flex items-center justify-center gap-4 group whitespace-nowrap">
                     Book Strategy Call
                     <span class="material-symbols-outlined text-[24px] group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">arrow_outward</span>
                 </a>
                 
-                <!-- Trust Metric -->
-                <div class="flex items-center gap-4 text-[#111111]">
-                    <div class="flex -space-x-3">
-                        <img class="w-10 h-10 rounded-full border-2 border-white shadow-md" src="https://ui-avatars.com/api/?name=J&background=111111&color=fff"/>
-                        <img class="w-10 h-10 rounded-full border-2 border-white shadow-md" src="https://ui-avatars.com/api/?name=A&background=5F5F5F&color=fff"/>
-                        <img class="w-10 h-10 rounded-full border-2 border-white shadow-md" src="https://ui-avatars.com/api/?name=M&background=FACC15&color=111111"/>
-                    </div>
-                    <span class="text-[14px] font-black uppercase tracking-wider">Trusted by 40+ Brands</span>
-                </div>
+
             </div>
         </div>
+    </section>
 
-        <!-- Right: Floating Phone/Reel Mockup (Gen-Z Vibe) -->
-        <div class="relative w-full h-[650px] flex items-center justify-center hidden md:flex reveal" style="transition-delay: 300ms">
-            <!-- Glowing aura behind phone -->
-            <div class="absolute w-[280px] h-[550px] bg-[#FACC15]/20 blur-[100px] opacity-30 rounded-full"></div>
-            
-            <!-- The iPhone Mockup -->
-            <div class="relative w-[320px] h-[650px] bg-[#111111] rounded-[50px] border-[8px] border-[#111111] shadow-[0_40px_80px_rgba(0,0,0,0.2)] overflow-hidden transform rotate-3 transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] animate-[float_6s_ease-in-out_infinite] group cursor-pointer z-10">
-                
-                <!-- Fake Dynamic Island -->
-                <div class="absolute top-4 left-1/2 -translate-x-1/2 w-28 h-8 bg-black rounded-full z-20 flex justify-end items-center pr-2">
-                    <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                </div>
-                
-                <!-- Reel Video/Image -->
-                <img src="https://picsum.photos/seed/reel1/600/1200" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="UGC Reel"/>
-                
-                <!-- TikTok/Reel UI Overlay -->
-                <div class="absolute inset-0 flex flex-col justify-end p-5 z-10 bg-gradient-to-t from-black/90 via-black/30 to-transparent">
-                    
-                    <!-- Right Side Icons -->
-                    <div class="absolute right-4 bottom-20 flex flex-col items-center gap-6 z-10">
-                        <div class="flex flex-col items-center gap-1 text-white group/icon hover:text-[#FACC15] transition-colors">
-                            <span class="material-symbols-outlined text-[32px] drop-shadow-md" style="font-variation-settings: 'FILL' 1;">favorite</span>
-                            <span class="text-[12px] font-bold">124K</span>
-                        </div>
-                        <div class="flex flex-col items-center gap-1 text-white hover:text-[#FACC15] transition-colors">
-                            <span class="material-symbols-outlined text-[32px] drop-shadow-md" style="font-variation-settings: 'FILL' 1;">chat_bubble</span>
-                            <span class="text-[12px] font-bold">4.2K</span>
-                        </div>
-                    </div>
 
-                    <!-- Bottom Info -->
-                    <div class="pr-16 w-full">
-                        <div class="flex items-center gap-3 mb-3">
-                            <div class="w-10 h-10 rounded-full border-2 border-[#FACC15] overflow-hidden shrink-0">
-                                <img src="https://ui-avatars.com/api/?name=S+F&background=111111&color=fff" class="w-full h-full object-cover"/>
-                            </div>
-                            <span class="text-white font-bold text-[15px] drop-shadow-md">@sparrowfilms</span>
-                        </div>
-                        <p class="text-white/90 text-[13px] leading-[1.4] mb-4 drop-shadow-md">
-                            How we scaled this D2C brand using just ONE high-converting hook.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Secondary floating element (Stats Card) - Improved & Positioned -->
-            <div class="absolute top-[20%] -left-12 bg-white border border-[#111111]/5 p-5 rounded-[24px] shadow-[0_30px_60px_rgba(0,0,0,0.12)] flex items-center gap-4 z-20 animate-[float_5s_ease-in-out_infinite_reverse]">
-                <div class="w-14 h-14 bg-[#FACC15] rounded-full flex items-center justify-center shadow-inner">
-                    <span class="material-symbols-outlined text-[#111111] text-[28px] font-bold">trending_up</span>
-                </div>
-                <div>
-                    <p class="text-[#5F5F5F] text-[11px] font-black uppercase tracking-wider">Average ROAS</p>
-                    <h4 class="text-[#111111] text-[32px] font-black leading-none mt-1 tracking-tighter">Scale</h4>
-                </div>
-            </div>
+
+    <!-- BRAND PARTNERS TICKER -->
+    <div class="marquee-container">
+        <div class="marquee-fade marquee-fade-left"></div>
+        <div class="marquee-fade marquee-fade-right"></div>
+        <div class="marquee-track">
+            <!-- Set 1 -->
+            <div class="marquee-item"><img src="Brand%20logos/CafeX24.png" alt="CafeX24" loading="eager"></div>
+            <div class="marquee-item"><img src="Brand%20logos/Gurukul.png" alt="Gurukul" loading="eager"></div>
+            <div class="marquee-item"><img src="Brand%20logos/Mohanlal-Sons.png" alt="Mohanlal Sons" loading="eager"></div>
+            <div class="marquee-item"><img src="Brand%20logos/Sitaram%20Ayurveda.png" alt="Sitaram Ayurveda" loading="eager"></div>
+            <div class="marquee-item"><img src="Brand%20logos/WING.jpg" alt="WING" class="blend" loading="eager"></div>
+            <div class="marquee-item"><img src="Brand%20logos/bombay%20shaving%20.png" alt="Bombay Shaving Company" loading="eager"></div>
+            <div class="marquee-item"><img src="Brand%20logos/rangbhumi.jpg" alt="Rangbhumi" class="blend" loading="eager"></div>
+            <!-- Set 2 (Loop) -->
+            <div class="marquee-item"><img src="Brand%20logos/CafeX24.png" alt="" loading="eager"></div>
+            <div class="marquee-item"><img src="Brand%20logos/Gurukul.png" alt="" loading="eager"></div>
+            <div class="marquee-item"><img src="Brand%20logos/Mohanlal-Sons.png" alt="" loading="eager"></div>
+            <div class="marquee-item"><img src="Brand%20logos/Sitaram%20Ayurveda.png" alt="" loading="eager"></div>
+            <div class="marquee-item"><img src="Brand%20logos/WING.jpg" alt="" class="blend" loading="eager"></div>
+            <div class="marquee-item"><img src="Brand%20logos/bombay%20shaving%20.png" alt="" loading="eager"></div>
+            <div class="marquee-item"><img src="Brand%20logos/rangbhumi.jpg" alt="" class="blend" loading="eager"></div>
         </div>
     </div>
-    </div>
-</section>
 
     <!-- SERVICES SECTION (Sticky Card Stacking) -->
 <section id="services" class="bg-[#FCFCFA] pt-24 pb-40 lg:pt-40 lg:pb-64 relative border-t border-[#111111]/10">
@@ -248,7 +257,7 @@
                 
                 <!-- Image/Graphic -->
                 <div class="w-full md:w-[40%] h-[180px] sm:h-[240px] md:h-[400px] mt-6 md:mt-0 rounded-[24px] overflow-hidden relative shadow-2xl rotate-3">
-                    <img src="images/services/service_1_content_design_1777140249834.png" class="w-full h-full object-cover" alt="Content Design"/>
+                    <img src="images/services/service_1_content_design_1777140249834.jpg" class="w-full h-full object-cover" alt="Content Design"/>
                 </div>
             </div>
 
@@ -271,7 +280,7 @@
                 </div>
                 
                 <div class="w-full md:w-[40%] h-[180px] sm:h-[240px] md:h-[400px] mt-6 md:mt-0 rounded-[24px] overflow-hidden relative shadow-2xl -rotate-3 border-4 border-white/10">
-                    <img src="images/services/service_2_cinematic_storytelling_1777140454256.png" class="w-full h-full object-cover" alt="Cinematic Storytelling"/>
+                    <img src="images/services/service_2_cinematic_storytelling_1777140454256.jpg" class="w-full h-full object-cover" alt="Cinematic Storytelling"/>
                 </div>
             </div>
 
@@ -294,7 +303,7 @@
                 </div>
                 
                 <div class="w-full md:w-[40%] h-[180px] sm:h-[240px] md:h-[400px] mt-6 md:mt-0 rounded-[24px] overflow-hidden relative shadow-2xl rotate-2">
-                    <img src="images/services/service_3_conversion_commercials_1777140472631.png" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" alt="Conversion Commercials"/>
+                    <img src="images/services/service_3_conversion_commercials_1777140472631.jpg" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" alt="Conversion Commercials"/>
                 </div>
             </div>
 
@@ -317,7 +326,7 @@
                 </div>
                 
                 <div class="w-full md:w-[40%] h-[180px] sm:h-[240px] md:h-[400px] mt-6 md:mt-0 rounded-[24px] overflow-hidden relative shadow-2xl -rotate-2">
-                    <img src="images/services/service_4_full_scale_execution_1777140518844.png" class="w-full h-full object-cover" alt="Full-Scale Production"/>
+                    <img src="images/services/service_4_full_scale_execution_1777140518844.jpg" class="w-full h-full object-cover" alt="Full-Scale Production"/>
                 </div>
             </div>
 
@@ -343,7 +352,7 @@
 
     <!-- The Horizontal Phone Carousel (CSS Only, Native Scroll) -->
 
-    <div class="w-full pl-6 md:pl-12 lg:pl-0 lg:max-w-[1400px] lg:mx-auto overflow-x-auto hide-scrollbar flex gap-6 lg:gap-10 snap-x snap-mandatory reveal pb-10 cursor-grab active:cursor-grabbing">
+    <div class="portfolio-scroll-container w-full pl-6 md:pl-12 lg:pl-0 lg:max-w-[1400px] lg:mx-auto overflow-x-auto hide-scrollbar flex gap-6 lg:gap-10 snap-x snap-mandatory reveal pb-10 cursor-grab active:cursor-grabbing">
         
         <!-- Phone Mockup 1 (Fashion UGC) -->
         <div class="relative w-[280px] md:w-[320px] h-[580px] md:h-[650px] shrink-0 bg-[#111111] rounded-[48px] border-[8px] border-[#111111] shadow-[0_20px_40px_rgba(0,0,0,0.1)] overflow-hidden snap-center group portfolio-item" data-reel-id="_lI7KTBbfFs" data-video-platform="youtube">
@@ -674,8 +683,11 @@
             <!-- Trust / Execution Badge -->
             <div class="mt-12 flex items-center gap-5 p-4 pr-6 bg-white border border-[#111111]/10 rounded-full shadow-[0_10px_30px_rgba(0,0,0,0.03)] w-fit group">
                 <div class="flex -space-x-3">
-                    <img class="w-12 h-12 rounded-full border-2 border-white object-cover" src="https://images.unsplash.com/photo-1531891570158-e71b35a485bc?q=80&w=200&auto=format&fit=crop"/>
-                    <img class="w-12 h-12 rounded-full border-2 border-white object-cover" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=200&auto=format&fit=crop"/>
+                    <img class="w-12 h-12 rounded-full border-2 border-white object-cover" src="Team_pics/Suraj.jpg"/>
+                    <img class="w-12 h-12 rounded-full border-2 border-white object-cover" src="Team_pics/Nitish.jpg"/>
+                    <img class="w-12 h-12 rounded-full border-2 border-white object-cover" src="Team_pics/Sachin.jpg"/>
+                    <img class="w-12 h-12 rounded-full border-2 border-white object-cover" src="Team_pics/Devansh.jpg"/>
+                    <img class="w-12 h-12 rounded-full border-2 border-white object-cover" src="Team_pics/Dhruv.jpg"/>
                     <div class="w-12 h-12 rounded-full border-2 border-white bg-[#111111] flex items-center justify-center text-[#FACC15] text-[12px] font-black group-hover:rotate-12 transition-transform duration-300">HQ</div>
                 </div>
                 <div class="flex flex-col">
@@ -693,7 +705,7 @@
                 
                 <!-- Large Vertical Image -->
                 <div class="h-[350px] md:h-[65%] w-full bg-[#111111] rounded-[32px] md:rounded-[48px] overflow-hidden relative group shadow-[0_20px_40px_rgba(0,0,0,0.1)]">
-                    <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover scale-105 group-hover:scale-100 transition-transform duration-700 opacity-90 group-hover:opacity-100" alt="Camera Setup"/>
+                    <img src="about%20pics/about%201.jpg" class="w-full h-full object-contain scale-105 group-hover:scale-100 transition-transform duration-700 opacity-90 group-hover:opacity-100" alt="Camera Setup"/>
                     <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                     <div class="absolute bottom-6 left-6 text-white">
                         <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-[#FACC15]">Equipment</span>
@@ -726,7 +738,7 @@
                 
                 <!-- Large Vertical Image -->
                 <div class="h-[350px] md:h-[65%] w-full bg-white rounded-[32px] md:rounded-[48px] overflow-hidden relative group shadow-[0_20px_40px_rgba(0,0,0,0.05)] border border-[#111111]/10">
-                    <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover scale-105 group-hover:scale-100 transition-transform duration-700 opacity-90 group-hover:opacity-100 grayscale hover:grayscale-0" alt="Editing Bay"/>
+                    <img src="about%20pics/about%202.jpg" class="w-full h-full object-cover scale-105 group-hover:scale-100 transition-transform duration-700 opacity-90 group-hover:opacity-100" alt="Editing Bay"/>
                     <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
                     <div class="absolute bottom-6 left-6 text-white">
                         <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-[#FACC15]">Post-Production</span>
@@ -881,16 +893,16 @@
             <div class="border-b border-[#111111]/10 pb-16 mb-16 reveal group cursor-default">
                 <span class="text-[#FACC15] text-[100px] font-black leading-none block mb-[-40px] opacity-30 group-hover:opacity-100 group-hover:translate-x-4 transition-all duration-700 ease-out select-none">"</span>
                 <p class="text-[24px] md:text-[32px] lg:text-[40px] font-black text-[#111111] leading-[1.2] tracking-tighter transition-colors duration-500">
-                    Working with Sparrow Films was a seamless, end-to-end experience. They managed the entire production of our advertisement with impressive precision—from building the sets to casting the perfect actors. Their ability to handle every moving part while maintaining such high creative standards made the process effortless for us. The final result is outstanding!
+                    Working with SPARROW FILMS was a seamless, end-to-end experience. They managed the entire production of our advertisement with impressive precision—from building the sets to casting the perfect actors. Their ability to handle every moving part while maintaining such high creative standards made the process effortless for us. The final result is outstanding!
                 </p>
                 <div class="mt-12 flex flex-col sm:flex-row sm:items-center gap-6 justify-between">
                     <div class="flex items-center gap-5">
-                        <div class="w-16 h-16 rounded-full overflow-hidden bg-[#111111] flex items-center justify-center text-[#FACC15] font-black text-[24px]">
-                            AS
+                        <div class="w-16 h-16 rounded-full overflow-hidden border-2 border-white shadow-lg bg-[#111111]">
+                            <img src="Testimonial%20pics/Testimonal%201.jpg" class="w-full h-full object-cover" alt="Aadil Farooque Siddiqui"/>
                         </div>
                         <div>
                             <h4 class="text-[16px] md:text-[18px] font-black text-[#111111] uppercase tracking-wide">Aadil Farooque Siddiqui</h4>
-                            <p class="text-[12px] font-bold text-[#5F5F5F] uppercase tracking-[0.2em] mt-1">Client</p>
+                            <p class="text-[12px] font-bold text-[#5F5F5F] uppercase tracking-[0.2em] mt-1">Director, Gurucool Vision Foundation</p>
                         </div>
                     </div>
                 </div>
@@ -904,8 +916,8 @@
                 </p>
                 <div class="mt-12 flex flex-col sm:flex-row sm:items-center gap-6 justify-between">
                     <div class="flex items-center gap-5">
-                        <div class="w-16 h-16 rounded-full overflow-hidden bg-[#111111] flex items-center justify-center text-white font-black text-[24px]">
-                            NC
+                        <div class="w-16 h-16 rounded-full overflow-hidden border-2 border-white shadow-lg bg-[#111111]">
+                            <img src="Testimonial%20pics/Testimonial%202.jpg" class="w-full h-full object-cover" alt="Naveen Chauhan"/>
                         </div>
                         <div>
                             <h4 class="text-[16px] md:text-[18px] font-black text-[#111111] uppercase tracking-wide">Naveen Chauhan</h4>
@@ -919,16 +931,16 @@
             <div class="pb-8 reveal group cursor-default" style="transition-delay: 200ms">
                 <span class="text-[#FACC15] text-[100px] font-black leading-none block mb-[-40px] opacity-30 group-hover:opacity-100 group-hover:translate-x-4 transition-all duration-700 ease-out select-none">"</span>
                 <p class="text-[24px] md:text-[32px] lg:text-[40px] font-black text-[#111111] leading-[1.2] tracking-tighter transition-colors duration-500">
-                    The SPARROW Films team is top-tier. They covered our event recently and nailed the vibe perfectly—professional, sharp, and easy to work with. They made AKGCC look great, and the quality speaks for itself. Highly recommended.
+                    The SPARROW FILMS team is top-tier. They covered our event recently and nailed the vibe perfectly—professional, sharp, and easy to work with. They made AKGCC look great, and the quality speaks for itself. Highly recommended.
                 </p>
                 <div class="mt-12 flex flex-col sm:flex-row sm:items-center gap-6 justify-between">
                     <div class="flex items-center gap-5">
-                        <div class="w-16 h-16 rounded-full overflow-hidden bg-[#111111] flex items-center justify-center text-white font-black text-[24px]">
-                            AK
+                        <div class="w-16 h-16 rounded-full overflow-hidden border-2 border-white shadow-lg bg-[#111111]">
+                            <img src="Testimonial%20pics/Testimonial%203.jpg" class="w-full h-full object-cover" alt="Amarjeet Kumar"/>
                         </div>
                         <div>
                             <h4 class="text-[16px] md:text-[18px] font-black text-[#111111] uppercase tracking-wide">Amarjeet Kumar</h4>
-                            <p class="text-[12px] font-bold text-[#5F5F5F] uppercase tracking-[0.2em] mt-1">Director, AKGCC</p>
+                            <p class="text-[12px] font-bold text-[#5F5F5F] uppercase tracking-[0.2em] mt-1">Founder, AKGCC</p>
                         </div>
                     </div>
                 </div>
@@ -958,36 +970,30 @@
     </div>
 
     <!-- Marquee Track -->
-    <div class="relative w-full reveal" style="transition-delay: 200ms">
-        
-        <!-- Fade Edges (narrow) -->
-        <div class="absolute left-0 top-0 bottom-0 w-12 md:w-20 bg-gradient-to-r from-[#FCFCFA] to-transparent z-10 pointer-events-none"></div>
-        <div class="absolute right-0 top-0 bottom-0 w-12 md:w-20 bg-gradient-to-l from-[#FCFCFA] to-transparent z-10 pointer-events-none"></div>
-
-        <!-- Single Row Marquee -->
-        <div class="flex animate-marquee">
-            <div class="flex shrink-0 items-center gap-2 md:gap-4 lg:gap-6 px-1 md:px-2">
-                <div class="h-14 md:h-16 w-[120px] md:w-[160px] flex items-center justify-center opacity-70 hover:opacity-100 transition-all duration-500"><img src="Brand logos/CafeX24.png" alt="CafeX24" class="max-h-full max-w-full object-contain"/></div>
-                <div class="h-14 md:h-16 w-[120px] md:w-[160px] flex items-center justify-center opacity-70 hover:opacity-100 transition-all duration-500"><img src="Brand logos/Gurukul.png" alt="Gurukul" class="max-h-full max-w-full object-contain"/></div>
-                <div class="h-14 md:h-16 w-[120px] md:w-[160px] flex items-center justify-center opacity-70 hover:opacity-100 transition-all duration-500"><img src="Brand logos/Mohanlal-Sons.png" alt="Mohanlal Sons" class="max-h-full max-w-full object-contain"/></div>
-                <div class="h-14 md:h-16 w-[120px] md:w-[160px] flex items-center justify-center opacity-70 hover:opacity-100 transition-all duration-500"><img src="Brand logos/Sitaram Ayurveda.png" alt="Sitaram Ayurveda" class="max-h-full max-w-full object-contain"/></div>
-                <div class="h-16 md:h-20 w-[140px] md:w-[180px] flex items-center justify-center opacity-70 hover:opacity-100 transition-all duration-500"><img src="Brand logos/WING.jpg" alt="WING" class="max-h-full max-w-full object-contain scale-110"/></div>
-                <div class="h-14 md:h-16 w-[120px] md:w-[160px] flex items-center justify-center opacity-70 hover:opacity-100 transition-all duration-500"><img src="Brand logos/bombay shaving .png" alt="Bombay Shaving Company" class="max-h-full max-w-full object-contain"/></div>
-                <div class="h-14 md:h-16 w-[120px] md:w-[160px] flex items-center justify-center opacity-70 hover:opacity-100 transition-all duration-500"><img src="Brand logos/rangbhumi.jpg" alt="Rangbhumi" class="max-h-full max-w-full object-contain"/></div>
-            </div>
-            <!-- Duplicate for seamless loop -->
-            <div class="flex shrink-0 items-center gap-2 md:gap-4 lg:gap-6 px-1 md:px-2" aria-hidden="true">
-                <div class="h-14 md:h-16 w-[120px] md:w-[160px] flex items-center justify-center opacity-70 hover:opacity-100 transition-all duration-500"><img src="Brand logos/CafeX24.png" alt="" class="max-h-full max-w-full object-contain"/></div>
-                <div class="h-14 md:h-16 w-[120px] md:w-[160px] flex items-center justify-center opacity-70 hover:opacity-100 transition-all duration-500"><img src="Brand logos/Gurukul.png" alt="" class="max-h-full max-w-full object-contain"/></div>
-                <div class="h-14 md:h-16 w-[120px] md:w-[160px] flex items-center justify-center opacity-70 hover:opacity-100 transition-all duration-500"><img src="Brand logos/Mohanlal-Sons.png" alt="" class="max-h-full max-w-full object-contain"/></div>
-                <div class="h-14 md:h-16 w-[120px] md:w-[160px] flex items-center justify-center opacity-70 hover:opacity-100 transition-all duration-500"><img src="Brand logos/Sitaram Ayurveda.png" alt="" class="max-h-full max-w-full object-contain"/></div>
-                <div class="h-16 md:h-20 w-[140px] md:w-[180px] flex items-center justify-center opacity-70 hover:opacity-100 transition-all duration-500"><img src="Brand logos/WING.jpg" alt="" class="max-h-full max-w-full object-contain scale-110"/></div>
-                <div class="h-14 md:h-16 w-[120px] md:w-[160px] flex items-center justify-center opacity-70 hover:opacity-100 transition-all duration-500"><img src="Brand logos/bombay shaving .png" alt="" class="max-h-full max-w-full object-contain"/></div>
-                <div class="h-14 md:h-16 w-[120px] md:w-[160px] flex items-center justify-center opacity-70 hover:opacity-100 transition-all duration-500"><img src="Brand logos/rangbhumi.jpg" alt="" class="max-h-full max-w-full object-contain"/></div>
-            </div>
+    <div class="marquee-container border-none !py-0">
+        <div class="marquee-fade marquee-fade-left"></div>
+        <div class="marquee-fade marquee-fade-right"></div>
+        <div class="marquee-track">
+            <!-- Set 1 -->
+            <div class="marquee-item"><img src="Brand%20logos/CafeX24.png" alt="CafeX24" loading="eager"></div>
+            <div class="marquee-item"><img src="Brand%20logos/Gurukul.png" alt="Gurukul" loading="eager"></div>
+            <div class="marquee-item"><img src="Brand%20logos/Mohanlal-Sons.png" alt="Mohanlal Sons" loading="eager"></div>
+            <div class="marquee-item"><img src="Brand%20logos/Sitaram%20Ayurveda.png" alt="Sitaram Ayurveda" loading="eager"></div>
+            <div class="marquee-item"><img src="Brand%20logos/WING.jpg" alt="WING" class="blend" loading="eager"></div>
+            <div class="marquee-item"><img src="Brand%20logos/bombay%20shaving%20.png" alt="Bombay Shaving Company" loading="eager"></div>
+            <div class="marquee-item"><img src="Brand%20logos/rangbhumi.jpg" alt="Rangbhumi" class="blend" loading="eager"></div>
+            <!-- Set 2 (Loop) -->
+            <div class="marquee-item"><img src="Brand%20logos/CafeX24.png" alt="" loading="eager"></div>
+            <div class="marquee-item"><img src="Brand%20logos/Gurukul.png" alt="" loading="eager"></div>
+            <div class="marquee-item"><img src="Brand%20logos/Mohanlal-Sons.png" alt="" loading="eager"></div>
+            <div class="marquee-item"><img src="Brand%20logos/Sitaram%20Ayurveda.png" alt="" loading="eager"></div>
+            <div class="marquee-item"><img src="Brand%20logos/WING.jpg" alt="" class="blend" loading="eager"></div>
+            <div class="marquee-item"><img src="Brand%20logos/bombay%20shaving%20.png" alt="" loading="eager"></div>
+            <div class="marquee-item"><img src="Brand%20logos/rangbhumi.jpg" alt="" class="blend" loading="eager"></div>
         </div>
     </div>
 </section>
+
 
 <!-- CONTACT SECTION (Minimal Split Layout) -->
 <section id="contact" class="bg-[#111111] py-24 md:py-40 px-4 md:px-8 lg:px-12 relative overflow-hidden border-t border-white/5">
@@ -1127,7 +1133,7 @@
                 <div class="flex items-start gap-3 max-w-[350px]">
                     <span class="material-symbols-outlined text-[#FACC15] text-[20px] shrink-0 mt-1">location_on</span>
                     <p class="text-white/60 text-[13px] md:text-[14px] font-medium leading-relaxed">
-                        Block D, 21C, Gali Number 8, Pandav Nagar,<br/> New Delhi, Delhi 110092
+                        H9MR+M8X, Vishal Sharma Marg, Sarfabad Village, Sarfabad, Sector 73, Noida, Uttar Pradesh 201316
                     </p>
                 </div>
             </div>
@@ -1160,8 +1166,8 @@
                  <h4 class="text-[#FCFCFA]/40 text-[11px] font-black uppercase tracking-[0.2em] mb-2 flex items-center gap-2">
                      <span class="w-1 h-1 bg-[#FCFCFA]/40 rounded-full"></span> Boring Stuff
                  </h4>
-                 <a href="/privacy" class="text-[#FCFCFA] text-[16px] font-black uppercase tracking-wider hover:translate-x-2 transition-transform">Privacy Policy</a>
-                 <a href="/terms" class="text-[#FCFCFA] text-[16px] font-black uppercase tracking-wider hover:translate-x-2 transition-transform">Terms of Use</a>
+                 <a href="privacy/" class="text-[#FCFCFA] text-[16px] font-black uppercase tracking-wider hover:translate-x-2 transition-transform">Privacy Policy</a>
+                 <a href="terms/" class="text-[#FCFCFA] text-[16px] font-black uppercase tracking-wider hover:translate-x-2 transition-transform">Terms of Use</a>
                  <a href="javascript:void(0)" id="footer-cookie-link" class="text-[#FCFCFA] text-[16px] font-black uppercase tracking-wider hover:translate-x-2 transition-transform">Cookie Policy</a>
              </div>
 
@@ -1255,7 +1261,12 @@
     });
 </script>
 
-<!-- Interactive Scripts -->
+<!-- Floating WhatsApp CTA (Smart Hide on Scroll) -->
+<a href="https://wa.me/919508953699" id="whatsapp-float" class="fixed bottom-6 right-6 md:bottom-10 md:right-10 z-[100] w-14 h-14 md:w-16 md:h-16 bg-white text-[#25D366] rounded-full flex items-center justify-center shadow-[0_15px_40px_rgba(0,0,0,0.2)] border-2 border-[#25D366] transition-all duration-500 opacity-0 pointer-events-none scale-0 hover:scale-110 active:scale-95 group/wa" target="_blank" aria-label="Chat on WhatsApp">
+    <div class="absolute inset-0 bg-[#25D366] rounded-full animate-ping opacity-10 group-hover:hidden"></div>
+    <svg class="w-7 h-7 md:w-9 md:h-9 fill-current relative z-10" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
 <script src="js/main.js"></script>
 
 </body>
