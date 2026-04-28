@@ -256,6 +256,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     <iframe 
                         src="https://www.youtube.com/embed/${reelId}?autoplay=1&rel=0&modestbranding=1&controls=0" 
                         class="w-full h-full border-none"
+                        style="object-fit: contain;"
                         allow="autoplay; encrypted-media; picture-in-picture" 
                         allowfullscreen>
                     </iframe>
@@ -267,7 +268,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     : `https://www.instagram.com/reel/${reelId}/embed/`;
                 
                 embedHtml = `
-                    <iframe src="${embedUrl}" class="w-full h-full border-none overflow-hidden" frameborder="0" scrolling="no" allowtransparency="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                    <iframe src="${embedUrl}" class="w-full h-full border-none overflow-hidden" style="object-fit: contain;" frameborder="0" scrolling="no" allowtransparency="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
                 `;
             }
             videoContainer.innerHTML = embedHtml;
