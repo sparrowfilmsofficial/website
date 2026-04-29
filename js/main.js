@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function() {
-    // Smoother Reveal
     const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -12,15 +11,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    // Magnetic Buttons Logic (Gen-Z modern interaction)
     const magneticBtns = document.querySelectorAll('.magnetic-btn');
     magneticBtns.forEach(btn => {
         btn.addEventListener('mousemove', function(e) {
             const position = btn.getBoundingClientRect();
             const x = e.pageX - position.left - position.width / 2;
             const y = e.pageY - position.top - position.height / 2;
-            
-            // Move the button itself slightly
             btn.children[0].style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
         });
 
@@ -34,7 +30,6 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
-    // Smooth Scrolling
     const allHashLinks = document.querySelectorAll('a[href^="#"]');
     allHashLinks.forEach(link => {
         link.addEventListener('click', function(e) {
@@ -52,7 +47,6 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
-    // Mobile Menu Logic
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
     const mobileIcon = document.getElementById('menu-text');
@@ -85,20 +79,17 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
-    // Scroll Spy & Header State
     const header = document.querySelector('header');
     const sections = document.querySelectorAll('section');
     const navLinks = document.querySelectorAll('nav a');
 
     window.addEventListener('scroll', () => {
-        // Header State
         if (window.scrollY > 50) {
             header.classList.add('header-scrolled');
         } else {
             header.classList.remove('header-scrolled');
         }
 
-        // Scroll Spy
         let current = '';
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
@@ -118,7 +109,6 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
-    // Contact Form Handler
     const contactForm = document.getElementById('sparrow-contact-form');
     if (contactForm) {
         contactForm.addEventListener('submit', async (e) => {
@@ -126,7 +116,6 @@ document.addEventListener("DOMContentLoaded", function() {
             const submitBtn = contactForm.querySelector('button[type="submit"]');
             const originalText = submitBtn.innerHTML;
             
-            // Collect Form Data
             const formData = {
                 name: document.getElementById('contact-name').value,
                 brand: document.getElementById('contact-brand').value,
@@ -135,12 +124,9 @@ document.addEventListener("DOMContentLoaded", function() {
                 message: document.getElementById('contact-message').value
             };
 
-            // GOOGLE APPS SCRIPT URL
             const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwzUk87Ld3Ov9ZaEBLFCOZ3ZPH792wsAAd7baHC1V_fTexzS9kQyM_J0k0uCSAvsywZ4A/exec';
 
-            if (!SCRIPT_URL || SCRIPT_URL === 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE') {
-                console.warn('Google Apps Script URL not set. Form submission will be simulated.');
-            } else {
+            if (SCRIPT_URL && SCRIPT_URL !== 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE') {
                 submitBtn.innerHTML = '<span class="material-symbols-outlined animate-spin">refresh</span> Sending...';
                 submitBtn.disabled = true;
 
@@ -176,14 +162,13 @@ document.addEventListener("DOMContentLoaded", function() {
                 return;
             }
 
-            // Fallback: Simulate form submission if URL is not set
             submitBtn.innerHTML = '<span class="material-symbols-outlined animate-spin">refresh</span> Sending...';
             submitBtn.disabled = true;
 
             setTimeout(() => {
                 const message = document.createElement('div');
                 message.className = 'form-success mt-8 reveal visible bg-[#FACC15]/10 text-[#FACC15] p-4 rounded-xl border border-[#FACC15]/20 font-bold text-center';
-                message.textContent = 'Project inquiry received. (SIMULATED - Set SCRIPT_URL in main.js)';
+                message.textContent = 'Project inquiry received.';
                 contactForm.appendChild(message);
                 
                 submitBtn.innerHTML = originalText;
@@ -194,23 +179,19 @@ document.addEventListener("DOMContentLoaded", function() {
             }, 1500);
         });
     }
-    // Portfolio Infinite Loop & Drag Logic
+
     const scrollContainer = document.querySelector('.portfolio-scroll-container');
     if (scrollContainer) {
         const originalItems = [...scrollContainer.querySelectorAll('.portfolio-item')];
         
-        // Clone items for infinite loop (maintain correct sequence)
         const clonesBefore = originalItems.map(item => item.cloneNode(true));
         const clonesAfter = originalItems.map(item => item.cloneNode(true));
 
-        // Append to end
         clonesAfter.forEach(clone => scrollContainer.appendChild(clone));
-        // Prepend to start (reverse loop to maintain order with insertBefore)
         clonesBefore.reverse().forEach(clone => {
             scrollContainer.insertBefore(clone, scrollContainer.firstChild);
         });
 
-        // Calculate metrics
         const getMetrics = () => {
             const firstItem = scrollContainer.querySelector('.portfolio-item');
             const style = window.getComputedStyle(scrollContainer);
@@ -218,34 +199,27 @@ document.addEventListener("DOMContentLoaded", function() {
             return firstItem.offsetWidth + gap;
         };
 
-        // Initial Position (centered on original items)
         let itemWidth = getMetrics();
-        // Use requestAnimationFrame for a clean jump before next paint
         requestAnimationFrame(() => {
             scrollContainer.scrollLeft = itemWidth * originalItems.length;
         });
 
-        // Resize handling
         window.addEventListener('resize', () => {
             itemWidth = getMetrics();
         });
 
-        // Infinite Scroll Boundary Logic
         scrollContainer.addEventListener('scroll', () => {
             const maxScroll = scrollContainer.scrollWidth - scrollContainer.clientWidth;
             const currentScroll = scrollContainer.scrollLeft;
-            const threshold = 10; // Precision buffer
+            const threshold = 10;
 
             if (currentScroll <= threshold) {
-                // Jump to the second set
                 scrollContainer.scrollLeft = itemWidth * originalItems.length;
             } else if (currentScroll >= maxScroll - threshold) {
-                // Jump back to the second set
                 scrollContainer.scrollLeft = maxScroll - (itemWidth * originalItems.length);
             }
         });
 
-        // Drag to Scroll Logic
         let isDown = false;
         let startX;
         let scrollLeft;
@@ -255,14 +229,14 @@ document.addEventListener("DOMContentLoaded", function() {
             scrollContainer.classList.add('active');
             startX = e.pageX - scrollContainer.offsetLeft;
             scrollLeft = scrollContainer.scrollLeft;
-            scrollContainer.style.scrollSnapType = 'none'; // Disable snap during drag
+            scrollContainer.style.scrollSnapType = 'none';
         });
         
         const stopDragging = () => {
             if (!isDown) return;
             isDown = false;
             scrollContainer.classList.remove('active');
-            scrollContainer.style.scrollSnapType = 'x mandatory'; // Re-enable snap
+            scrollContainer.style.scrollSnapType = 'x mandatory';
         };
 
         scrollContainer.addEventListener('mouseleave', stopDragging);
@@ -277,7 +251,6 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    // Portfolio Video Embedding (Using Event Delegation for Clones)
     document.addEventListener('click', (e) => {
         const playBtn = e.target.closest('.play-overlay');
         if (!playBtn) return;
@@ -291,11 +264,9 @@ document.addEventListener("DOMContentLoaded", function() {
         const thumbnail = item.querySelector('.thumbnail-img');
 
         if (videoContainer && reelId) {
-            // Hide UI
             if (thumbnail) thumbnail.classList.add('opacity-0');
             playBtn.classList.add('opacity-0', 'pointer-events-none');
 
-            // Show video
             videoContainer.classList.remove('hidden');
             videoContainer.innerHTML = ''; 
 
@@ -324,26 +295,22 @@ document.addEventListener("DOMContentLoaded", function() {
             videoContainer.innerHTML = embedHtml;
         }
     });
-    // WhatsApp Smart-Hide Logic
+
     const whatsappBtn = document.getElementById('whatsapp-float');
     if (whatsappBtn) {
         let scrollTimeout;
         
-        // Initial show after 2 seconds
         setTimeout(() => {
             whatsappBtn.classList.add('opacity-100', 'pointer-events-auto', 'scale-100');
             whatsappBtn.classList.remove('opacity-0', 'pointer-events-none', 'scale-0');
         }, 2000);
 
         window.addEventListener('scroll', () => {
-            // Instantly hide on scroll
             whatsappBtn.classList.remove('opacity-100', 'pointer-events-auto', 'scale-100');
             whatsappBtn.classList.add('opacity-0', 'pointer-events-none', 'scale-0');
 
-            // Clear existing timeout
             clearTimeout(scrollTimeout);
 
-            // Re-show after 800ms of no scrolling
             scrollTimeout = setTimeout(() => {
                 whatsappBtn.classList.add('opacity-100', 'pointer-events-auto', 'scale-100');
                 whatsappBtn.classList.remove('opacity-0', 'pointer-events-none', 'scale-0');
@@ -351,7 +318,6 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    // Premium Hero Text Looping Logic
     const group1 = document.getElementById('hero-text-group-1');
     const group2 = document.getElementById('hero-text-group-2');
     
@@ -360,26 +326,19 @@ document.addEventListener("DOMContentLoaded", function() {
         
         setInterval(() => {
             if (isGroup1Active) {
-                // Group 1 exits up, Group 2 enters from bottom and becomes active
                 group1.className = 'hero-text-group exit-up';
                 group2.className = 'hero-text-group active';
-                
-                // Prepare group 1 to come from bottom next time
                 setTimeout(() => {
                     group1.className = 'hero-text-group enter-down';
-                }, 1200); // Wait for transition to finish
-                
+                }, 1200);
             } else {
-                // Group 2 exits up, Group 1 enters from bottom and becomes active
                 group2.className = 'hero-text-group exit-up';
                 group1.className = 'hero-text-group active';
-                
-                // Prepare group 2 to come from bottom next time
                 setTimeout(() => {
                     group2.className = 'hero-text-group enter-down';
                 }, 1200);
             }
             isGroup1Active = !isGroup1Active;
-        }, 4000); // Switch every 4 seconds
+        }, 4000);
     }
 });
