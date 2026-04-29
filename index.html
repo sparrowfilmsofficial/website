@@ -135,14 +135,21 @@
             align-items: center;
             justify-content: center;
             pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 1;
         }
         .hero-text-group.active {
             pointer-events: auto;
+            opacity: 1;
+            z-index: 2;
         }
         .hero-text-group > span {
             display: block;
             transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), filter 1.2s cubic-bezier(0.16, 1, 0.3, 1);
             will-change: transform, opacity, filter;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
         }
         .hero-text-group.active > span {
             transform: translateY(0) scale(1) rotateX(0);
@@ -164,7 +171,7 @@
             transition-delay: 0s;
         }
         .hero-text-group > span:nth-child(2) {
-            transition-delay: 0.1s;
+            transition-delay: 0s;
         }
         
         
