@@ -200,29 +200,36 @@ document.addEventListener("DOMContentLoaded", function() {
         };
 
         let itemWidth = getMetrics();
+        const totalOriginalWidth = itemWidth * originalItems.length;
+
+        // Initialize scroll position
         requestAnimationFrame(() => {
-            scrollContainer.scrollLeft = itemWidth * originalItems.length;
+            scrollContainer.scrollLeft = totalOriginalWidth;
         });
 
         window.addEventListener('resize', () => {
             itemWidth = getMetrics();
         });
 
+        // Optimized scroll listener using requestAnimationFrame for smoothness
+        let isTicking = false;
         scrollContainer.addEventListener('scroll', () => {
-            const maxScroll = scrollContainer.scrollWidth - scrollContainer.clientWidth;
-            const currentScroll = scrollContainer.scrollLeft;
-            const threshold = 10;
+            if (!isTicking) {
+                window.requestAnimationFrame(() => {
+                    const currentScroll = scrollContainer.scrollLeft;
+                    const maxScroll = scrollContainer.scrollWidth - scrollContainer.clientWidth;
+                    const threshold = 20;
 
-            if (currentScroll <= threshold) {
-                scrollContainer.style.scrollBehavior = 'auto';
-                scrollContainer.scrollLeft = itemWidth * originalItems.length;
-                scrollContainer.style.scrollBehavior = '';
-            } else if (currentScroll >= maxScroll - threshold) {
-                scrollContainer.style.scrollBehavior = 'auto';
-                scrollContainer.scrollLeft = maxScroll - (itemWidth * originalItems.length);
-                scrollContainer.style.scrollBehavior = '';
+                    if (currentScroll <= threshold) {
+                        scrollContainer.scrollLeft = currentScroll + totalOriginalWidth;
+                    } else if (currentScroll >= maxScroll - threshold) {
+                        scrollContainer.scrollLeft = currentScroll - totalOriginalWidth;
+                    }
+                    isTicking = false;
+                });
+                isTicking = true;
             }
-        });
+        }, { passive: true });
 
         let isDown = false;
         let startX;
@@ -233,14 +240,12 @@ document.addEventListener("DOMContentLoaded", function() {
             scrollContainer.classList.add('active');
             startX = e.pageX - scrollContainer.offsetLeft;
             scrollLeft = scrollContainer.scrollLeft;
-            scrollContainer.style.scrollSnapType = 'none';
         });
         
         const stopDragging = () => {
             if (!isDown) return;
             isDown = false;
             scrollContainer.classList.remove('active');
-            scrollContainer.style.scrollSnapType = 'x mandatory';
         };
 
         scrollContainer.addEventListener('mouseleave', stopDragging);
@@ -250,7 +255,7 @@ document.addEventListener("DOMContentLoaded", function() {
             if (!isDown) return;
             e.preventDefault();
             const x = e.pageX - scrollContainer.offsetLeft;
-            const walk = (x - startX) * 1.5; 
+            const walk = (x - startX) * 2;
             scrollContainer.scrollLeft = scrollLeft - walk;
         });
     }
