@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-    const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
+    const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -10% 0px" };
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -214,9 +214,13 @@ document.addEventListener("DOMContentLoaded", function() {
             const threshold = 10;
 
             if (currentScroll <= threshold) {
+                scrollContainer.style.scrollBehavior = 'auto';
                 scrollContainer.scrollLeft = itemWidth * originalItems.length;
+                scrollContainer.style.scrollBehavior = '';
             } else if (currentScroll >= maxScroll - threshold) {
+                scrollContainer.style.scrollBehavior = 'auto';
                 scrollContainer.scrollLeft = maxScroll - (itemWidth * originalItems.length);
+                scrollContainer.style.scrollBehavior = '';
             }
         });
 
