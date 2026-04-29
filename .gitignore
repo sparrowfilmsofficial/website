@@ -1,6 +1,8 @@
 node_modules/
 skills/
 plan.md
+DESIGN.md
+build.js
 .DS_Store
 .gemini/
 .stitch/

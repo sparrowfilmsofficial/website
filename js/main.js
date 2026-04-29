@@ -119,21 +119,71 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     // Contact Form Handler
-    const contactForm = document.querySelector('#contact form');
+    const contactForm = document.getElementById('sparrow-contact-form');
     if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
+        contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             const submitBtn = contactForm.querySelector('button[type="submit"]');
             const originalText = submitBtn.innerHTML;
             
+            // Collect Form Data
+            const formData = {
+                name: document.getElementById('contact-name').value,
+                brand: document.getElementById('contact-brand').value,
+                email: document.getElementById('contact-email').value,
+                service: document.getElementById('contact-service').value,
+                message: document.getElementById('contact-message').value
+            };
+
+            // GOOGLE APPS SCRIPT URL
+            const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwzUk87Ld3Ov9ZaEBLFCOZ3ZPH792wsAAd7baHC1V_fTexzS9kQyM_J0k0uCSAvsywZ4A/exec';
+
+            if (!SCRIPT_URL || SCRIPT_URL === 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE') {
+                console.warn('Google Apps Script URL not set. Form submission will be simulated.');
+            } else {
+                submitBtn.innerHTML = '<span class="material-symbols-outlined animate-spin">refresh</span> Sending...';
+                submitBtn.disabled = true;
+
+                try {
+                    await fetch(SCRIPT_URL, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(formData)
+                    });
+
+                    const message = document.createElement('div');
+                    message.className = 'form-success mt-8 reveal visible bg-[#FACC15]/10 text-[#FACC15] p-4 rounded-xl border border-[#FACC15]/20 font-bold text-center';
+                    message.textContent = 'Project inquiry received. We will contact you within 24 hours.';
+                    contactForm.appendChild(message);
+                    
+                    contactForm.reset();
+                    setTimeout(() => message.remove(), 5000);
+
+                } catch (error) {
+                    console.error('Submission error:', error);
+                    const message = document.createElement('div');
+                    message.className = 'form-error mt-8 reveal visible bg-red-500/10 text-red-400 p-4 rounded-xl border border-red-500/20 font-bold text-center';
+                    message.textContent = 'Something went wrong. Please try again or email us directly.';
+                    contactForm.appendChild(message);
+                    setTimeout(() => message.remove(), 5000);
+                } finally {
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                }
+                return;
+            }
+
+            // Fallback: Simulate form submission if URL is not set
             submitBtn.innerHTML = '<span class="material-symbols-outlined animate-spin">refresh</span> Sending...';
             submitBtn.disabled = true;
 
-            // Simulate form submission
             setTimeout(() => {
                 const message = document.createElement('div');
-                message.className = 'form-success mt-8 reveal visible';
-                message.textContent = 'Project inquiry received. We will contact you within 24 hours.';
+                message.className = 'form-success mt-8 reveal visible bg-[#FACC15]/10 text-[#FACC15] p-4 rounded-xl border border-[#FACC15]/20 font-bold text-center';
+                message.textContent = 'Project inquiry received. (SIMULATED - Set SCRIPT_URL in main.js)';
                 contactForm.appendChild(message);
                 
                 submitBtn.innerHTML = originalText;
