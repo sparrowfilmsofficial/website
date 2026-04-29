@@ -71,9 +71,9 @@
         /* Mobile text scaling to prevent breaking */
         @media (max-width: 767px) {
             .hero-title {
-                font-size: clamp(16px, 6vw, 48px) !important;
+                font-size: clamp(20px, 8.5vw, 48px) !important;
             }
-            .hero-text-group > * {
+            .hero-text-group > span {
                 white-space: nowrap;
             }
         }
@@ -90,31 +90,31 @@
         .hero-text-group.active {
             pointer-events: auto;
         }
-        .hero-text-group > * {
-            display: flex;
+        .hero-text-group > span {
+            display: block;
             transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), filter 1.2s cubic-bezier(0.16, 1, 0.3, 1);
             will-change: transform, opacity, filter;
         }
-        .hero-text-group.active > * {
+        .hero-text-group.active > span {
             transform: translateY(0) scale(1) rotateX(0);
             opacity: 1;
             filter: blur(0px);
         }
-        .hero-text-group.exit-up > * {
+        .hero-text-group.exit-up > span {
             transform: translateY(-80px) scale(0.95) rotateX(20deg);
             opacity: 0;
             filter: blur(10px);
         }
-        .hero-text-group.enter-down > * {
+        .hero-text-group.enter-down > span {
             transform: translateY(80px) scale(1.05) rotateX(-20deg);
             opacity: 0;
             filter: blur(10px);
         }
         /* Staggering for a premium cascading effect */
-        .hero-text-group > *:nth-child(1) {
+        .hero-text-group > span:nth-child(1) {
             transition-delay: 0s;
         }
-        .hero-text-group > *:nth-child(2) {
+        .hero-text-group > span:nth-child(2) {
             transition-delay: 0.1s;
         }
         
@@ -286,17 +286,11 @@
             <h1 class="text-[48px] md:text-[80px] lg:text-[100px] font-black text-white uppercase leading-[0.9] tracking-tighter mb-12 md:mb-8 reveal hero-title hero-text-wrapper">
                 <div class="hero-text-group active" id="hero-text-group-1">
                     <span>STOP POSTING.</span>
-                    <div class="flex items-center gap-3 md:gap-5 justify-center">
-                        <span>START</span>
-                        <div class="bg-[#FACC15] text-white w-10 h-10 md:w-16 md:h-16 flex items-center justify-center shadow-[0_10px_30px_rgba(250,204,21,0.3)] transform -rotate-6 hover:rotate-0 transition-all duration-500 cursor-default group/icon" style="border-radius: 25%;">
-                            <span class="material-symbols-outlined text-[22px] md:text-[40px] lg:text-[48px] leading-none transition-transform duration-500 group-hover/icon:scale-110" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
-                        </div>
-                        <span>COMMUNICATING.</span>
-                    </div>
+                    <span><span class="text-[#FACC15]">START</span> COMMUNICATING.</span>
                 </div>
                 <div class="hero-text-group enter-down" id="hero-text-group-2">
                     <span>YOU NEED</span>
-                    <span class="flex items-center gap-3 md:gap-5 justify-center">CONTENT <span class="text-[#FACC15]">EXPERTS.</span></span>
+                    <span>CONTENT <span class="text-[#FACC15]">EXPERTS.</span></span>
                 </div>
             </h1>
 
@@ -848,7 +842,7 @@
                 
                 <!-- Large Vertical Image -->
                 <div class="h-[350px] md:h-[65%] w-full bg-[#111111] rounded-[32px] md:rounded-[48px] overflow-hidden relative group shadow-[0_20px_40px_rgba(0,0,0,0.1)]">
-                    <img src="about%20pics/about%201.jpg" class="w-full h-full object-contain scale-105 group-hover:scale-100 transition-transform duration-700 opacity-90 group-hover:opacity-100" alt="Camera Setup"/>
+                    <img src="about%20pics/about%201.jpg" class="w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-700 opacity-90 group-hover:opacity-100" alt="Camera Setup"/>
                     <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                     <div class="absolute bottom-6 left-6 text-white">
                         <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-[#FACC15]">Equipment</span>
@@ -881,7 +875,7 @@
                 
                 <!-- Large Vertical Image -->
                 <div class="h-[350px] md:h-[65%] w-full bg-white rounded-[32px] md:rounded-[48px] overflow-hidden relative group shadow-[0_20px_40px_rgba(0,0,0,0.05)] border border-[#111111]/10">
-                    <img src="about%20pics/about%202.jpg" class="w-full h-full object-cover scale-105 group-hover:scale-100 transition-all duration-700 grayscale group-hover:grayscale-0" alt="Editing Bay"/>
+                    <img src="about%20pics/about%202.jpg" class="w-full h-full object-cover scale-110 group-hover:scale-100 transition-all duration-700 grayscale group-hover:grayscale-0" alt="Editing Bay"/>
                     <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
                     <div class="absolute bottom-6 left-6 text-white">
                         <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-[#FACC15]">Post-Production</span>
