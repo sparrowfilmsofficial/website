@@ -350,4 +350,36 @@ document.addEventListener("DOMContentLoaded", function() {
             }, 800);
         });
     }
+
+    // Premium Hero Text Looping Logic
+    const group1 = document.getElementById('hero-text-group-1');
+    const group2 = document.getElementById('hero-text-group-2');
+    
+    if (group1 && group2) {
+        let isGroup1Active = true;
+        
+        setInterval(() => {
+            if (isGroup1Active) {
+                // Group 1 exits up, Group 2 enters from bottom and becomes active
+                group1.className = 'hero-text-group exit-up';
+                group2.className = 'hero-text-group active';
+                
+                // Prepare group 1 to come from bottom next time
+                setTimeout(() => {
+                    group1.className = 'hero-text-group enter-down';
+                }, 1200); // Wait for transition to finish
+                
+            } else {
+                // Group 2 exits up, Group 1 enters from bottom and becomes active
+                group2.className = 'hero-text-group exit-up';
+                group1.className = 'hero-text-group active';
+                
+                // Prepare group 2 to come from bottom next time
+                setTimeout(() => {
+                    group2.className = 'hero-text-group enter-down';
+                }, 1200);
+            }
+            isGroup1Active = !isGroup1Active;
+        }, 4000); // Switch every 4 seconds
+    }
 });
