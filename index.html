@@ -71,9 +71,9 @@
         /* Mobile text scaling to prevent breaking */
         @media (max-width: 767px) {
             .hero-title {
-                font-size: clamp(20px, 8.5vw, 48px) !important;
+                font-size: clamp(16px, 6vw, 48px) !important;
             }
-            .hero-text-group > span {
+            .hero-text-group > * {
                 white-space: nowrap;
             }
         }
@@ -90,31 +90,31 @@
         .hero-text-group.active {
             pointer-events: auto;
         }
-        .hero-text-group > span {
-            display: block;
+        .hero-text-group > * {
+            display: flex;
             transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), filter 1.2s cubic-bezier(0.16, 1, 0.3, 1);
             will-change: transform, opacity, filter;
         }
-        .hero-text-group.active > span {
+        .hero-text-group.active > * {
             transform: translateY(0) scale(1) rotateX(0);
             opacity: 1;
             filter: blur(0px);
         }
-        .hero-text-group.exit-up > span {
+        .hero-text-group.exit-up > * {
             transform: translateY(-80px) scale(0.95) rotateX(20deg);
             opacity: 0;
             filter: blur(10px);
         }
-        .hero-text-group.enter-down > span {
+        .hero-text-group.enter-down > * {
             transform: translateY(80px) scale(1.05) rotateX(-20deg);
             opacity: 0;
             filter: blur(10px);
         }
         /* Staggering for a premium cascading effect */
-        .hero-text-group > span:nth-child(1) {
+        .hero-text-group > *:nth-child(1) {
             transition-delay: 0s;
         }
-        .hero-text-group > span:nth-child(2) {
+        .hero-text-group > *:nth-child(2) {
             transition-delay: 0.1s;
         }
         
@@ -286,11 +286,17 @@
             <h1 class="text-[48px] md:text-[80px] lg:text-[100px] font-black text-white uppercase leading-[0.9] tracking-tighter mb-12 md:mb-8 reveal hero-title hero-text-wrapper">
                 <div class="hero-text-group active" id="hero-text-group-1">
                     <span>STOP POSTING.</span>
-                    <span>START <span class="text-[#FACC15]">COMMUNICATING.</span></span>
+                    <div class="flex items-center gap-3 md:gap-5 justify-center">
+                        <span>START</span>
+                        <div class="bg-[#FACC15] text-white w-10 h-10 md:w-16 md:h-16 flex items-center justify-center shadow-[0_10px_30px_rgba(250,204,21,0.3)] transform -rotate-6 hover:rotate-0 transition-all duration-500 cursor-default group/icon" style="border-radius: 25%;">
+                            <span class="material-symbols-outlined text-[22px] md:text-[40px] lg:text-[48px] leading-none transition-transform duration-500 group-hover/icon:scale-110" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+                        </div>
+                        <span>COMMUNICATING.</span>
+                    </div>
                 </div>
                 <div class="hero-text-group enter-down" id="hero-text-group-2">
                     <span>YOU NEED</span>
-                    <span>CONTENT <span class="text-[#FACC15]">EXPERTS.</span></span>
+                    <span class="flex items-center gap-3 md:gap-5 justify-center">CONTENT <span class="text-[#FACC15]">EXPERTS.</span></span>
                 </div>
             </h1>
 
