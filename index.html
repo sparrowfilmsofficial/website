@@ -98,6 +98,43 @@
             opacity: 0.7;
             transition: opacity 0.3s ease;
         }
+        .marquee-item img:hover { opacity: 1; }
+
+        /* Robust Wipe Animation */
+        .card-wipe-container {
+            background-color: #111111 !important;
+            transition: background-color 0.5s ease;
+        }
+        .wipe-layer {
+            position: absolute;
+            inset: 0;
+            background-color: #FACC15;
+            z-index: 10;
+            clip-path: inset(100% 0 0 0);
+            transition: clip-path 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .card-wipe-container:hover .wipe-layer {
+            clip-path: inset(0 0 0 0);
+        }
+        .card-content {
+            position: relative;
+            z-index: 20;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            pointer-events: none;
+        }
+        .card-wipe-container:hover .text-white {
+            color: #111111 !important;
+        }
+        .card-wipe-container:hover .text-white\/50 {
+            color: rgba(17, 17, 17, 0.7) !important;
+        }
+        .card-wipe-container:hover .border-white\/20 {
+            border-color: rgba(17, 17, 17, 0.2) !important;
+        }
+        
         @media (min-width: 640px) { .marquee-item img { height: 40px; } .marquee-item { padding: 0 60px; } }
         @media (min-width: 768px) { .marquee-item img { height: 56px; } .marquee-item { padding: 0 80px; } }
         
@@ -627,19 +664,19 @@
             
             
             
-            <div class="md:col-span-8 bg-[#111111] rounded-[32px] md:rounded-[48px] p-8 md:p-12 flex flex-col justify-between overflow-hidden relative reveal cursor-default shadow-[0_20px_50px_rgba(0,0,0,0.15)] group">
+            <div class="md:col-span-8 card-wipe-container rounded-[32px] md:rounded-[48px] p-8 md:p-12 overflow-hidden relative reveal cursor-default shadow-[0_20px_50px_rgba(0,0,0,0.15)] group isolate">
                 
-                <div class="absolute inset-0 bg-[#FACC15] translate-y-[100%] group-hover:translate-y-0 transition-transform duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)] z-0"></div>
+                <div class="wipe-layer"></div>
                 
-                <div class="relative z-10 flex flex-col h-full justify-between">
+                <div class="card-content">
                     <div class="flex justify-between items-start">
-                        <span class="text-white/50 group-hover:text-[#111111] text-[12px] md:text-[14px] font-bold uppercase tracking-[0.2em] transition-colors duration-500">Average 3-Second Hook Rate</span>
-                        <div class="w-12 h-12 rounded-full border border-white/20 group-hover:border-[#111111]/30 flex items-center justify-center transition-colors duration-500">
-                            <span class="material-symbols-outlined text-white group-hover:text-[#111111] transition-colors duration-500 transform group-hover:rotate-45">arrow_upward</span>
+                        <span class="text-white/50 text-[12px] md:text-[14px] font-bold uppercase tracking-[0.2em] transition-colors duration-500">Average 3-Second Hook Rate</span>
+                        <div class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center transition-colors duration-500">
+                            <span class="material-symbols-outlined text-white transition-colors duration-500 transform group-hover:rotate-45">arrow_upward</span>
                         </div>
                     </div>
                     
-                    <h3 class="text-[120px] md:text-[180px] lg:text-[200px] font-black text-white group-hover:text-[#111111] leading-[0.75] tracking-tighter transition-colors duration-500">
+                    <h3 class="text-[120px] md:text-[180px] lg:text-[200px] font-black text-white leading-[0.75] tracking-tighter transition-colors duration-500">
                         64<span class="text-[60px] md:text-[100px]">%</span>
                     </h3>
                 </div>
