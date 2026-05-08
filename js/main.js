@@ -142,10 +142,10 @@ document.addEventListener("DOMContentLoaded", function() {
                     });
 
                     const message = document.createElement('div');
-                    message.className = 'form-success mt-8 reveal visible p-5 rounded-2xl font-black text-center shadow-[0_10px_30px_rgba(250,204,21,0.2)] uppercase tracking-wide';
-                    message.style.backgroundColor = '#FACC15';
-                    message.style.color = '#111111';
-                    message.style.border = 'none';
+                    message.className = 'form-success mt-8 reveal visible p-5 rounded-2xl font-bold text-center shadow-[0_10px_30px_rgba(0,0,0,0.1)] uppercase tracking-wide';
+                    message.style.backgroundColor = 'rgba(250, 204, 21, 0.1)';
+                    message.style.color = '#FACC15';
+                    message.style.border = '1px solid rgba(250, 204, 21, 0.2)';
                     message.textContent = 'Project inquiry received. We will contact you within 24 hours.';
                     contactForm.appendChild(message);
                     
@@ -171,10 +171,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
             setTimeout(() => {
                 const message = document.createElement('div');
-                message.className = 'form-success mt-8 reveal visible p-5 rounded-2xl font-black text-center shadow-[0_10px_30px_rgba(250,204,21,0.2)] uppercase tracking-wide';
-                message.style.backgroundColor = '#FACC15';
-                message.style.color = '#111111';
-                message.style.border = 'none';
+                message.className = 'form-success mt-8 reveal visible p-5 rounded-2xl font-bold text-center shadow-[0_10px_30px_rgba(0,0,0,0.1)] uppercase tracking-wide';
+                message.style.backgroundColor = 'rgba(250, 204, 21, 0.1)';
+                message.style.color = '#FACC15';
+                message.style.border = '1px solid rgba(250, 204, 21, 0.2)';
                 message.textContent = 'Project inquiry received.';
                 contactForm.appendChild(message);
                 
