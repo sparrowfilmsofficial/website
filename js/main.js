@@ -141,7 +141,10 @@ document.addEventListener("DOMContentLoaded", function() {
                     });
 
                     const message = document.createElement('div');
-                    message.className = 'form-success mt-8 reveal visible bg-[#FACC15]/10 text-[#FACC15] p-4 rounded-xl border border-[#FACC15]/20 font-bold text-center';
+                    message.className = 'form-success mt-8 reveal visible p-5 rounded-2xl font-black text-center shadow-[0_10px_30px_rgba(250,204,21,0.2)] uppercase tracking-wide';
+                    message.style.backgroundColor = '#FACC15';
+                    message.style.color = '#111111';
+                    message.style.border = 'none';
                     message.textContent = 'Project inquiry received. We will contact you within 24 hours.';
                     contactForm.appendChild(message);
                     
@@ -167,7 +170,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
             setTimeout(() => {
                 const message = document.createElement('div');
-                message.className = 'form-success mt-8 reveal visible bg-[#FACC15]/10 text-[#FACC15] p-4 rounded-xl border border-[#FACC15]/20 font-bold text-center';
+                message.className = 'form-success mt-8 reveal visible p-5 rounded-2xl font-black text-center shadow-[0_10px_30px_rgba(250,204,21,0.2)] uppercase tracking-wide';
+                message.style.backgroundColor = '#FACC15';
+                message.style.color = '#111111';
+                message.style.border = 'none';
                 message.textContent = 'Project inquiry received.';
                 contactForm.appendChild(message);
                 
