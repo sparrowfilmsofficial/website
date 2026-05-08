@@ -120,6 +120,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 name: document.getElementById('contact-name').value,
                 brand: document.getElementById('contact-brand').value,
                 email: document.getElementById('contact-email').value,
+                phone: document.getElementById('contact-phone').value,
                 service: document.getElementById('contact-service').value,
                 message: document.getElementById('contact-message').value
             };

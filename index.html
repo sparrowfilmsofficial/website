@@ -1232,19 +1232,25 @@
                     </div>
 
                     
-                    <div class="flex flex-col gap-3 group">
-                        <label for="contact-service" class="text-[11px] md:text-[13px] font-bold text-white/40 uppercase tracking-[0.2em] group-focus-within:text-[#FACC15] transition-colors ml-4">Service Needed</label>
-                        <div class="relative">
-                            <select id="contact-service" class="w-full bg-[#111111] border border-white/10 rounded-2xl px-6 py-4 md:py-5 text-[16px] md:text-[18px] font-medium text-white outline-none focus:border-[#FACC15] focus:ring-1 focus:ring-[#FACC15]/50 hover:border-white/20 appearance-none cursor-pointer transition-all duration-300">
-                                <option value="" disabled selected class="text-white/20">Select a service</option>
-                                <option class="bg-[#111111] text-white">Content Consultation</option>
-                                <option class="bg-[#111111] text-white">Monthly Content</option>
-                                <option class="bg-[#111111] text-white">Brand Films</option>
-                                <option class="bg-[#111111] text-white">Advertisements</option>
-                                <option class="bg-[#111111] text-white">End-to-End Production</option>
-                                <option class="bg-[#111111] text-white">Other</option>
-                            </select>
-                            <span class="material-symbols-outlined absolute right-6 top-1/2 -translate-y-1/2 text-white/40 pointer-events-none group-focus-within:text-[#FACC15] transition-colors">&#xe5cf;</span>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+                        <div class="flex flex-col gap-3 group">
+                            <label for="contact-phone" class="text-[11px] md:text-[13px] font-bold text-white/40 uppercase tracking-[0.2em] group-focus-within:text-[#FACC15] transition-colors ml-4">Phone Number</label>
+                            <input id="contact-phone" type="tel" placeholder="+91 98765 43210" class="bg-[#111111] border border-white/10 rounded-2xl px-6 py-4 md:py-5 text-[16px] md:text-[18px] font-medium text-white outline-none focus:border-[#FACC15] focus:ring-1 focus:ring-[#FACC15]/50 hover:border-white/20 transition-all duration-300 placeholder:text-white/20" required>
+                        </div>
+                        <div class="flex flex-col gap-3 group">
+                            <label for="contact-service" class="text-[11px] md:text-[13px] font-bold text-white/40 uppercase tracking-[0.2em] group-focus-within:text-[#FACC15] transition-colors ml-4">Service Needed</label>
+                            <div class="relative">
+                                <select id="contact-service" class="w-full bg-[#111111] border border-white/10 rounded-2xl px-6 py-4 md:py-5 text-[16px] md:text-[18px] font-medium text-white outline-none focus:border-[#FACC15] focus:ring-1 focus:ring-[#FACC15]/50 hover:border-white/20 appearance-none cursor-pointer transition-all duration-300">
+                                    <option value="" disabled selected class="text-white/20">Select a service</option>
+                                    <option class="bg-[#111111] text-white">Content Consultation</option>
+                                    <option class="bg-[#111111] text-white">Monthly Content</option>
+                                    <option class="bg-[#111111] text-white">Brand Films</option>
+                                    <option class="bg-[#111111] text-white">Advertisements</option>
+                                    <option class="bg-[#111111] text-white">End-to-End Production</option>
+                                    <option class="bg-[#111111] text-white">Other</option>
+                                </select>
+                                <span class="material-symbols-outlined absolute right-6 top-1/2 -translate-y-1/2 text-white/40 pointer-events-none group-focus-within:text-[#FACC15] transition-colors">&#xe5cf;</span>
+                            </div>
                         </div>
                     </div>
 
