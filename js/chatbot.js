@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
   setTimeout(() => {
     triggerBtn.classList.add('opacity-100', 'pointer-events-auto', 'scale-100');
     triggerBtn.classList.remove('opacity-0', 'pointer-events-none', 'scale-0');
-  }, 2000);
+  }, 500);
 
   window.addEventListener('scroll', () => {
     triggerBtn.classList.remove('opacity-100', 'pointer-events-auto', 'scale-100');
