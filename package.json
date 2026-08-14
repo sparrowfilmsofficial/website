@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "node server.js",
     "start": "node server.js",
+    "build": "tailwindcss -i ./css/style.css -o ./css/output.css",
     "build:css": "tailwindcss -i ./css/style.css -o ./css/output.css",
     "watch:css": "tailwindcss -i ./css/style.css -o ./css/output.css --watch"
   },
